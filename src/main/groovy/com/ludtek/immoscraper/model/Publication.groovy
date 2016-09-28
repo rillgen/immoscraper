@@ -1,4 +1,4 @@
-package com.ludtek.immoscrapper.model
+package com.ludtek.immoscraper.model
 
 import groovy.transform.*
 

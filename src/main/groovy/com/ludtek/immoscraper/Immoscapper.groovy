@@ -1,4 +1,4 @@
-package com.ludtek.immoscrapper
+package com.ludtek.immoscraper
 
 class Immoscapper {
 
