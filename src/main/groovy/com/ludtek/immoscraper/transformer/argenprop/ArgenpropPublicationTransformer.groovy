@@ -13,8 +13,11 @@ class ArgenpropPublicationTransformer implements PublicationTransformer {
 
 	def BASE_URL = "http://www.argenprop.com"
 	
+	def PROVIDER = "argenprop"
+	
 	def PRICE_REGEX = ~/(.+) ([0-9\\.]+)/
 	def ID_REGEX = ~/Propiedades\/Detalles\/([0-9]+)--.+/
+	def AREA_REGEX = ~/(\d+) .+/
 
 	@Override
 	public Publication parse(GPathResult rootnode) {
@@ -38,6 +41,7 @@ class ArgenpropPublicationTransformer implements PublicationTransformer {
 			
 			operation = meta["cXenseParse:tipooperacion"]
 			propertyType = meta["cXenseParse:tipopropiedad"]
+			provider = PROVIDER
 			
 			partido = sanitize(meta["cXenseParse:partido"])
 			localidad = sanitize(meta["cXenseParse:localidad"])
@@ -47,6 +51,16 @@ class ArgenpropPublicationTransformer implements PublicationTransformer {
 			url =  BASE_URL + meta["og:url"]
 			
 			title = sanitize(meta["og:title"].trim())
+			
+			def dormvalue = meta["cXenseParse:cantidaddedormitorios"]						
+			dormcount = dormvalue&&dormvalue!="Monoambiente"?dormvalue.toInteger():0
+			
+			switch(meta["cXenseParse:superficiecubierta"]) {
+				case AREA_REGEX:
+					area = m[0][1].toInteger()
+			}
+			
+			disposition = meta["cXenseParse:disposición"]
 			
 			description = sanitize(additionalInfoNode?.div?.find { it.@class == "fields" }?.text()?.trim())
 			
@@ -58,7 +72,7 @@ class ArgenpropPublicationTransformer implements PublicationTransformer {
 	}
 	
 	public static final String sanitize(String value) {
-		value?value.replaceAll("<br>|\n|\t|\r|,|/", " "):value
+		value?value.replaceAll("<br\\/>|<br>|\n|\t|\r|,|\\/", " "):value
 	}
 		
 	@Override

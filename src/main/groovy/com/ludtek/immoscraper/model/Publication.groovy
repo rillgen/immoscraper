@@ -15,6 +15,10 @@ class Publication {
 	String partido
 	String localidad
 	String barrio
+	String provider
+	int area
+	int dormcount
+	String disposition
 	int amount
 	String currency
 	

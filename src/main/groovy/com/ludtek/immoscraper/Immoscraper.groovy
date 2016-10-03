@@ -7,11 +7,11 @@ import com.ludtek.immoscraper.transformer.argenprop.ArgenpropURLGenerator
 
 class Immoscraper {
 	
-	private static final File OUTPUT_FILE = new File("/Users/rillgen/immoscrapper", "test.csv")
+	private static final File OUTPUT_FILE = new File(System.getProperty("user.home")+"/immoscraper", "test.csv")
 
 	public static void main(String[] args) {
 
-		def crawler = new Crawler(new ArgenpropURLGenerator(8119298), new ArgenpropPublicationTransformer())
+		def crawler = new Crawler(new ArgenpropURLGenerator(8121158), new ArgenpropPublicationTransformer())
 
 		OUTPUT_FILE.createNewFile()
 		

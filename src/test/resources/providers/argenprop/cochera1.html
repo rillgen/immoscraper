@@ -1,0 +1,1449 @@
+
+
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html id="ie8" lang="es">
+<![endif]-->
+<!--[if IE 9]>
+<html id="ie9" lang="es" >
+<![endif]-->
+<!--[if !IE]><!-->
+<html lang="es">
+<!--<![endif]-->
+<head id="ctl00_ctl00_Head1"><meta charset="utf-8" /><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"7f23b45671","applicationID":"11291876","transactionName":"YgBTZ0oDCxUDAEEIX1tKfGV7TSQQCxBaEnNaC0VBVw4JAxBMcQREVAxdQA==","queueTime":0,"applicationTime":182,"ttGuid":"D6BE4F60DEBB1A94","agent":""}</script><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQMBVFBXGwIBVlhTDwYB"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(s){try{i("ierr",[s,(new Date).getTime(),!0])}catch(c){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,e,n){u&&(d+=1)}),s.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState";t("loader").features.stn=!0,t(6);var g=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof g&&(this.bstStart=Date.now())}),o.on(w,function(t,e){var n=t[0];n instanceof g&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on(m,function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),this.bstType])}),s.on(m,function(){this.bstStart=Date.now()}),s.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,!1),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(17)(a),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=c(n,"nr@wrapped",function(){return s(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&s.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],6:[function(t,e,n){var r=t("ee").get("history"),o=t(17)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,e,n){var r=t("ee").get("raf"),o=t(17)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(17)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){v.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<v.length;t++)r([],v[t]);v.length&&(v=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t(17)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],v=[];e.exports=u;var y=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;a<d;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],11:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],12:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var u=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit"],d="api-",l=d+"ixn-";a(u,function(t,e){f[e]=o(d+e,!0,"api")}),f.addPageAction=o(d+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var p=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){p[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],13:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],14:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],15:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],16:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],17:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],s])}f(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],s),l}finally{f(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!c){c=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}c=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,c=0;c<s;c++)a[c].apply(i,r);var u=f[w[n]];return u&&u.push([v,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){c(t,function(t,n){e=e||"feature",w[n]=e,e in f||(f[e]=[])})}var m={},w={},v={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return v}function i(){return new r}var a="nr@context",s=t("gos"),c=t(15),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!g++){var t=y.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(w,function(e,n){t[e]||(t[e]=n)});var n="https"===m.split(":")[0]||t.sslForHttp;y.proto=n?"https://":"http://",s("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=y.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){s("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var s=t("handle"),c=t(15),f=window,u=f.document,d="addEventListener",l="attachEvent",p=f.XMLHttpRequest,h=p&&p.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:p,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(12);var m=""+location,w={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-974.min.js"},v=p&&h&&h[d]&&!/CriOS/.test(navigator.userAgent),y=e.exports={offset:a(),origin:m,features:{},xhrWrappable:v};u[d]?(u[d]("DOMContentLoaded",i,!1),f[d]("load",r,!1)):(u[l]("onreadystatechange",o),f[l]("onload",r)),s("mark",["firstbyte",a()],null,"api");var g=0},{}]},{},["loader",2,10,4,3]);</script><title>
+	
+    Cochera en Venta en Capital Federal, Caballito ID_7145782
+
+</title>
+    
+    <!-- Meta tags OpenGraph para FaceBook y Google+ -->
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Argenprop" />
+	
+	
+	 
+    <meta  property="og:image" content="http://www.argenprop.com/Content/1024/img/Comun/SinFoto-G.gif"/>
+    
+	<meta property="og:image"  content="http://www.argenprop.com/Content/1024/img/comun/logo_argenprop.png" />
+	<meta property="og:title" content="Cochera en Venta en Capital Federal, Caballito " />
+	
+	
+	<meta property="og:description" content="Venta y alquiler de propiedades e inmuebles; casas, departamentos, locales, oficinas, terrenos, etc." />	
+	
+	
+	<meta property="og:url" content="/Propiedades/Detalles/7145782--Cochera-en-Venta-en-Capital-Federal"/>
+    <!-- Meta tags OpenGraph para FaceBook y Google+ -->
+<link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" /><script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>(window.jQuery)||document.write('<script src="/bundles/jquery"><\/script>');</script>
+<script src="/bundles/master?v=yPqc465g4lUlr3e4To4h2P-7kfz05RXGDCnfXreWHCg1"></script>
+<link href="/Content/master?v=lnUGmiZ-_Fzl6MGqkfqPpxUlWg0c6OshZJVBHR73M1A1" rel="stylesheet"/>
+<script type="text/javascript" src="http://tracker.argenprop.com/jquery.track.agea-1.2.js"></script><script type="text/javascript">if(typeof $.track === "undefined" || typeof $.track.default_options === "undefined"){document.write(unescape("<scri"+"pt type='text/javascript' src='/Scripts/jquery.track.agea-1.2.js'></scri"+"pt>"));try{$("script[src*='jquery.track.agea']").on("load",function(){$.track.default_options.url = "http://tracker.argenprop.com/track.gif"; $.track.default_options.stopTrackings = false;});}catch(err){$("script[src*='jquery.track.agea']").load(function(){$.track.default_options.url = "http://tracker.argenprop.com/track.gif"; $.track.default_options.stopTrackings = false;});}if ($.browser.msie && $.browser.version < 9 ){setTimeout('$.track.default_options.url = "http://tracker.argenprop.com/track.gif"; $.track.default_options.stopTrackings = false;',1000)}}else{$.track.default_options.url = "http://tracker.argenprop.com/track.gif"; $.track.default_options.stopTrackings = false;};if(typeof window.JSON === "undefined"){/*needs compatibility with JSON*/document.write(unescape("<scri"+"pt type='text/javascript' src='http://tracker.argenprop.com/json2.js'></scri"+"pt>"));};</script> 
+
+    <!--[if IE]>
+    <link href="/Content/ieMaster?v=bZL1j2PsvFkYQhh4xnGC36AesKBomfjBtOW7rfxbeKk1" rel="stylesheet"/>
+<script src="/bundles/corsIE8?v=Ic2FfCKfX6xdPI1Jw9VidPrd4w4Ij8BW7O9rAhd6b9A1"></script>
+         
+    <!--<![endif]-->
+
+    <link rel="publisher" href="https://plus.google.com/116729082709047806490" /><script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+<script>(window.jQuery.ui)||document.write('<script src="/bundles/jqueryui"><\/script>');</script>
+<link href="/Content/jqueryui?v=S7N5DFEAi_4KAFRY3zClM0k1RiWT-INpomsx5x1-t7U1" rel="stylesheet"/>
+
+
+    <script src="http://cdn1.smartadserver.com/diff/js/smartadserver.js"></script>
+    <meta name="description" content="Cochera en Venta. Dr J F Aranguren 10600, Caballito, Capital Federal" />
+    <meta name="keywords" content="Cochera, Venta, Inmobiliaria, FP CONSULTORA INMOBILIARIA, Capital Federal, Caballito, propiedades en venta, propiedades en alquiler, alquileres, red inmobiliaria, inmuebles, propiedades, inmuebles en venta, inmuebles en alquiler, busqueda de inmuebles, busqueda de propiedades" />
+    
+    <link href="/Content/ficha?v=s5_FJF3NG8Oez3LCp6jnptM3xUaGwLghiB5ZN4mhHLU1" rel="stylesheet"/>
+
+    <link href="/Content/leaflet?v=NJsBb1ybfFc8Dc9UeOC_s_NtdtbY0zTy0pxlUZNYnx81" rel="stylesheet"/>
+
+
+    <script src="/bundles/playeryt-ficha"></script>
+
+    <script src="/bundles/leafletBase?v=0blLHqqZn2l9Ng42k2PjCv4OA7bJEZKeaUQ8U18EeOo1"></script>
+
+    <script src="/bundles/ficha?v=DNs7NQVtCBZES6zovPk28JweMwP54f-N97E1rK24u7o1"></script>
+
+
+    <script type="text/javascript" src="http://tracker.argenprop.com/jquery.track.agea-1.2.js"></script><script type="text/javascript">if(typeof $.track === "undefined" || typeof $.track.default_options === "undefined"){document.write(unescape("<scri"+"pt type='text/javascript' src='/Scripts/jquery.track.agea-1.2.js'></scri"+"pt>"));try{$("script[src*='jquery.track.agea']").on("load",function(){$.track.default_options.url = "http://tracker.argenprop.com/track.gif"; $.track.default_options.stopTrackings = false;});}catch(err){$("script[src*='jquery.track.agea']").load(function(){$.track.default_options.url = "http://tracker.argenprop.com/track.gif"; $.track.default_options.stopTrackings = false;});}if ($.browser.msie && $.browser.version < 9 ){setTimeout('$.track.default_options.url = "http://tracker.argenprop.com/track.gif"; $.track.default_options.stopTrackings = false;',1000)}}else{$.track.default_options.url = "http://tracker.argenprop.com/track.gif"; $.track.default_options.stopTrackings = false;};if(typeof window.JSON === "undefined"){/*needs compatibility with JSON*/document.write(unescape("<scri"+"pt type='text/javascript' src='http://tracker.argenprop.com/json2.js'></scri"+"pt>"));};</script>
+
+    
+
+<meta name="cXenseParse:tipopropiedad" content="Cochera">
+<meta name="cXenseParse:tipooperacion" content="Venta">
+
+<meta name="cXenseParse:tipodecochera" content="Fija">
+<meta name="cXenseParse:tipodeacceso" content="Rampa Fija">
+<meta name="cXenseParse:tipodecobertura" content="Cubierta">
+<meta name="cXenseParse:tipodecoche" content="Mediano">
+
+ <meta name="cXenseParse:precio" content="USD 21.500"/>
+       
+ <meta name="cXenseParse:pais" content="Argentina"/>
+       
+ <meta name="cXenseParse:regionbusqueda" content="Capital Federal"/>
+       
+ <meta name="cXenseParse:provincia" content="Capital Federal"/>
+       
+ <meta name="cXenseParse:partido" content="Capital Federal"/>
+       
+ <meta name="cXenseParse:localidad" content="Capital Federal"/>
+       
+ <meta name="cXenseParse:barrio" content="Caballito"/>
+       
+ <meta name="cXenseParse:nombreanunciante" content="FP CONSULTORA INMOBILIARIA"/>
+       <script>var googletag = googletag || {};googletag.cmd = googletag.cmd || [];(function() {var gads = document.createElement('script');gads.async = true;gads.type = 'text/javascript';var useSSL = 'https:' == document.location.protocol;gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';var node = document.getElementsByTagName('script')[0];node.parentNode.insertBefore(gads, node);})();</script>
+    <script type='text/javascript'>googletag.cmd.push(function() {googletag.defineSlot('/24365041/Ficha_Aside_Top300X250', [300, 250], 'div-gpt-ad-1448908075635-0').addService(googletag.pubads()).setTargeting('pais', '1').setTargeting('zona', '1').setTargeting('provincia', '2').setTargeting('partido', '135').setTargeting('localidad', '2102').setTargeting('barrio', '8').setCollapseEmptyDiv(true);googletag.pubads().enableSingleRequest();googletag.enableServices();});</script>  
+    
+</head>
+<body>
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-KXR5P9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>       
+        (function(w,d,s,l,i){
+            w[l]=w[l]||[];
+            w[l].push(
+            {
+                'gtm.start': new Date().getTime(),
+                event:'gtm.js'
+            });
+            var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true;
+            j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KXR5P9');
+    </script>
+    <!-- End Google Tag Manager -->
+    
+    
+     <script> sas_renderMode = 3;sas_scriptDomain = 'http://ww619.smartadserver.com';var sas_target = 'kw_inmTipoinmueble=;kw_InmOperacion=;kw_InmPais=;kw_InmZona=;kw_InmProvincia=;kw_InmPartido=;kw_InmLocalidad=;kw_InmBarrio=';function readCookie(name) {return (name = new RegExp('(?:^|;\\s*)'+('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(document.cookie))&& name[1];}if( typeof(sas_target)=='undefined' || sas_target==''){ try{ var sas_target = readCookie('cxSegmentos'); }catch(e){};}else{ try{ if(sas_target[sas_target.length-1]!=';')sas_target+=';';sas_target = sas_target+sas_target+readCookie('cxSegmentos'); }catch(e){};}sas_pageid = "50075/(ficha)";</script>    
+
+    <!-- AdServer - Comienzo  Banners flotantes -->
+    <script type="text/javascript">sas_formatid=12724;SmartAdServerAjax(sas_pageid,sas_formatid,sas_target);</script><noscript><a href="http://ww619.smartadserver.com/call/pubjumpi/50075/(ficha)/12724/S/[timestamp]/kw_inmTipoinmueble=;kw_InmOperacion=;kw_InmPais=;kw_InmZona=;kw_InmProvincia=;kw_InmPartido=;kw_InmLocalidad=;kw_InmBarrio=/?"target="_blank"><img src="http://ww619.smartadserver.com/call/pubi/50075/(ficha)/12724/S/[timestamp]/kw_inmTipoinmueble=;kw_InmOperacion=;kw_InmPais=;kw_InmZona=;kw_InmProvincia=;kw_InmPartido=;kw_InmLocalidad=;kw_InmBarrio=/?"border="0"alt=""/></a></noscript>
+    <script type="text/javascript">sas_formatid=13955;SmartAdServerAjax(sas_pageid,sas_formatid,sas_target);</script><noscript><a href="http://ww619.smartadserver.com/call/pubjumpi/50075/(ficha)/13955/S/[timestamp]/kw_inmTipoinmueble=;kw_InmOperacion=;kw_InmPais=;kw_InmZona=;kw_InmProvincia=;kw_InmPartido=;kw_InmLocalidad=;kw_InmBarrio=/?"target="_blank"><img src="http://ww619.smartadserver.com/call/pubi/50075/(ficha)/13955/S/[timestamp]/kw_inmTipoinmueble=;kw_InmOperacion=;kw_InmPais=;kw_InmZona=;kw_InmProvincia=;kw_InmPartido=;kw_InmLocalidad=;kw_InmBarrio=/?"border="0"alt=""/></a></noscript>
+    <!-- AdServer - Fin  Banners flotantes -->	
+
+
+
+    <!--ACA CARGA EL POPUP CONTACTO-->
+    <div id="modalContacto"></div>
+    <div id="modalLoginBox">
+        
+<div class="popUp-shadow" onclick="APL.closeModal();"></div>
+<div id="modal-login-container">
+    <div class="box-login-generic box-popup-generic">
+        <a href="javascript:void(0);" onclick="APL.closeModal();" class="AGclose" title="cerrar"></a>
+        <p class="titleBox">Ingresar a mi cuenta</p>
+        <div class="box-login">
+            
+            <fieldset class="clearfix">            
+                <label for="usuario" class="label-input">Email: *</label>
+                <input class="validate" name="usuario" id="usuario" type="text" data-validate="req | email"  />            
+                <span class="input-error"></span>
+            </fieldset>
+            <fieldset class="clearfix">            
+                <label for="password" class="label-input">Contraseña: *</label>
+                <input class="validate" data-validate="req | minlength(4)" type="password" name="password" id="password"  onkeydown="if ((event.which && event.which == 13)||(event.keyCode && event.keyCode == 13)){APL.DoLogin(); return false;} else return true;" />            
+                <span class="input-error"></span>
+            </fieldset>
+            
+            <div class="login-no-approved" style="display:none;">
+                <p>El usuario no está confirmado. Revise su email para completar la registración. Si no lo recibió haga click <a href="#" id="send-confirmation">aqui</a> y se lo enviaremos nuevamente.</p>
+                <form id="form-send-confirmation" method ="post" action="/Usuarios/ReenviarConfirmacion">
+                    <input type="hidden" name="usuario" class="input-confirmation" />
+                </form>  
+            </div>
+
+            <fieldset class="clearfix">
+                <div class="btn-primary-container">
+                    <a rel="nofollow" id="btn-login-modal" class="btn-primary" href="#" title="Ingresar">
+                        Ingresar
+                    </a>
+                </div>
+            </fieldset>
+            
+            <fieldset class="clearfix btn-footer-row">
+                
+                <input checked="checked" id="recordarUsuario" name="recordarUsuario" type="checkbox" value="true" /><input name="recordarUsuario" type="hidden" value="false" />
+                <label for="recordarUsuario">No cerrar sesi&oacute;n</label> 
+                <a class="fr" title="¿Olvidaste tu contrase&ntilde;a?" href="/Usuarios/GetPasswordResetCode">¿Olvidaste tu contrase&ntilde;a?</a> 
+            </fieldset>
+
+        </div>
+        <div class="box-footer clearfix">
+            <p class="box-footer-text">¿A&uacute;n no tenes cuenta?   
+                <a href="#" class="btn-footer-login" title="Registrate gratis" rel="nofollow">  Registrate gratis  </a>
+            </p>
+        </div>
+        
+    </div>
+</div>
+<div id="modal-register-container"></div>
+<div id="modal-register-success"></div>
+
+<script type="text/javascript">
+    $(document).on("ready", function(){
+        $("#btn-login-modal").on("click", function(e){
+            e.preventDefault();
+            APL.DoLogin(); 
+        });
+
+        $(".box-login-generic .btn-footer-login").on("click", function(e){
+            e.preventDefault();
+            if( $("#modal-register-container").is(':empty') ){
+                $(this).addClass("hidden");
+                var opts = {
+                  width: 2, // The line thickness
+                  radius: 2, // The radius of the inner circle
+                  position: 'absolute'
+                };
+                var spinner = new Spinner(opts).spin();
+                $(".box-login-generic .box-footer-text").append(spinner.el);
+                APL.openRegisterModal();
+            } else {
+                APL.limpiarErrores("modal-register");
+                $("#modal-register-container").show();
+                $("#emailPopUp").focus();    
+                APL.refreshCaptchaRegister();
+            }
+
+        });
+
+
+    });
+
+
+</script>
+
+    </div>
+
+    <div id="modalRegisterDummyBox">       
+        
+<div class="popUp-shadow" onclick="APL.closeModalRegisterDummy();"></div>
+<div class="box-register-dummy box-popup-generic" id="box-register-dummy">
+    <a href="javascript:void(0);" onclick="APL.closeModalRegisterDummy();" class="AGclose" title="cerrar"></a>
+    <p class="titleBox">Ingres&aacute; tu email para que el anunciante te pueda responder</p>
+    <fieldset class="clearfix">            
+        <label for="emailDummy" class="label-input">Email: *</label>
+        <input name="emailDummy" id="emailDummy" type="text" class="validate" data-validate="req | email"  />
+        <span class="input-error"></span>
+
+    </fieldset>
+       
+    <div class="box-dummy-error">            
+        <p>Error</p>            
+    </div>        
+                
+    <fieldset class="clearfix">
+        <div class="btn-primary-container">
+            <a id="continuarDummy" class="btn-primary btn-register-dummy" href="#" title="Continuar">
+              Ingresar
+            </a>
+        </div>
+   
+    </fieldset>
+    <div class="box-footer clearfix">
+        <p class="box-footer-text">¿Ya ten&eacute;s cuenta?
+            <a rel="nofollow" href="javascript:void(0);" class="btn-footer-login" onclick="openLoginPopUp('/Contactos/ContactoVendedorFicha',$(this)); return false;" title="Ingresa aqui" >          
+                Ingres&aacute; aqu&iacute;         
+            </a>
+        </p>
+    </div>
+    <p class="footer-bottom-text">
+        Al registrarme, declaro que acepto los <a href="/StaticView/Terminos" target="_blank" title="terminos y condiciones" >T&eacute;rminos y Condiciones</a>
+         y las <a href="/StaticView/Privacidad" target="_blank" title="privacidad">Pol&iacute;ticas de Privacidad</a>
+    </p>
+ 
+
+ </div>
+
+
+<script type="text/javascript">
+    function openLoginPopUp(url, sender) {
+        APL.closeModalRegisterDummy();                  
+        globalLoginAndCallbackContactar(url);
+    };
+
+    $("#continuarDummy").on("click", function (e) {
+        e.preventDefault();
+        APL.DoRegisterDummy();
+    });
+
+</script>
+ 
+    </div>
+
+    
+    
+
+ 
+
+    <div id="printSpinner" style="display: none;">
+        <div class="popUp-shadow"></div>
+        <div id="popUp-spinner" class="spinner-impresion"></div>
+    </div>
+    <div id="lightbox-ficha" class="lightbox-ficha" style="display:none;">
+            <div class="popUp-shadow"></div>
+            <div class="lightbox-container slider-ficha">
+                <div class="top-header">
+                    <div class="direccion">
+                        <div class="address">
+                            <span>Dr J F Aranguren 10600</span>
+                            
+                        </div>
+                        <div class="description">
+                            <span class="separator">- </span>
+                            <span class="type">Cochera</span> en <span class="operation">venta</span>, <span class="zone">Caballito</span>
+                        </div>
+                    </div>
+                    <div class="fotos-close">
+                        <span id="current-slide-lightbox"></span><span> de </span>
+                        <span id="total-fotos-lightbox"></span>
+                        <span id="lightbox-close">X</span>
+                    </div>
+                </div>    
+                <div class="photo-container">
+                    
+
+<ul id="images">
+   
+</ul>
+
+                    <div class="controls">
+                        <span id="lightbox-prev" class="btn-slider lightbox-prev" title="Ver mas fotos"></span>
+                        <span id="lightbox-next" class="btn-slider lightbox-next" title="Ver mas fotos"></span>
+                    </div> 
+                </div>
+                <div class="footer-lightbox" style="display:none">
+                    <span class="btn-lightbox btn-video"><span class="btn-icono icono-video"></span>Ver video</span>
+                    <span class="btn-lightbox btn-fotos"><span class="btn-icono icono-foto"></span>Ver fotos</span>
+                </div>
+            </div>
+       
+    </div>
+
+
+
+    
+
+
+<header>
+   
+        <div class="main-header clearfix">
+            
+            <a href="/" title="Argenprop, Venta y alquiler de propiedades" class="header-logo">
+                    <img alt="Argenprop" src="/Content/1024/img/v2/logo_argenprop.jpg" width="208" height="51" />
+                </a>
+                	
+                
+    			<ul class="header-nav">
+    			    
+    				    <li title="Buscar Propiedad" >
+    					    <a href="/" class="selected">Buscar Propiedad</a>
+           			    </li>
+                    
+     				
+                    <li title="Noticias">
+                        <a href="http://articulos.argenprop.com">Noticias</a>
+    				    <span class="new">new</span>
+                    </li>
+                    
+                    <li  title="Publicar">
+                       <a href="/Publicar-Inmueble">Publicar</a>
+                    </li>
+    				
+                    <li title="Inmobiliarias">
+    					<a href="/Software-Gestion-Inmobiliaria" >Inmobiliarias</a>
+    				</li>
+                  
+                    
+    			</ul>
+
+                      
+            <div class="header-others-links">
+                
+                
+
+	<ul class="header-user-login no-user-login-loaded" id="no-user-login-loaded" >
+    <li>
+       
+       <span>Registrate</span> 
+    </li>
+    <li class="pipe"><span>|</span></li>
+    <li>
+      	<span>Ingresar</span> 
+     
+    </li>
+    <li class="pipe"><span>|</span></li>
+    <li>
+    	<a href="/Tarifas" title="Publicar">Publicar</a>
+    </li>
+	
+
+</ul>
+<ul class="header-user-login" id="no-user-login" style="display:none;">
+	<li>
+		<a href="/Usuarios/Create" title="Registrate">Registrate</a>
+	</li>
+	<li class="pipe"><span>|</span></li>
+	<li>
+		<a rel="nofollow" href="javascript: APL.openLoginModal();" title="Ingresar">Ingresar</a>
+	</li>
+	  <li class="pipe"><span>|</span></li>
+    <li>
+    	<a href="/Tarifas" title="Publicar">Publicar</a>
+    </li>
+</ul>
+<ul class="header-user-login user-logued" id="user-logued" style="display:none;">
+	<li id="headerUserName"></li>
+	<li class="first icon">
+		<div class="tooltip-header usercount">
+			<span class="pico"></span>
+			<a rel="nofollow" href="/Usuarios/Update" title="Mi Cuenta">Mi Cuenta</a>
+			<hr>
+	 		<a rel="nofollow" href="/Usuarios/Logout" title="Salir"><span class="logout"></span>Salir</a>
+		</div>
+	</li>
+	<li class="alerts icon" style = "display:none;"></li>
+	<li class="favs icon">
+		<span class="favs-searchs-count"></span>
+		
+		
+		<div class="tooltip-header menu-favs">
+			<span class="pico"></span>
+			<a rel="nofollow" id="guardarEnFavoritos" href="/Usuarios/Favoritos" title="Mis favoritos" >Mis favoritos (<span class="favs-count"></span>)</a>
+			<hr>
+	 		<a rel="nofollow" href="/Usuarios/Busquedas" title="Mis busquedas" id="viewAllSearchs">Mis busquedas (<span class="searchs-count"></span>)</a>
+		</div>
+	</li>
+	<li class="pipe"><span>|</span></li>
+	 <li>
+    	<a href="/Publicar-Inmueble" title="Publicar">Publicar</a>
+    </li>
+ </ul>
+	<div class="tooltip-publicar">
+		<a href="#" class="AGclose"></a>
+		<p class="main">&iexcl;Vend&eacute; o alquil&aacute; tu propiedad!</p>
+		<p>Aprovech&aacute; la promo 3x1 y <a href="/Publicar-Inmueble" class="link">public&aacute; ahora.</a></p>
+	</div>
+
+<script>
+	$(".header-user-login .first, #headerUserName").on("hover", function(){
+		$(".tooltip-header.usercount").stop().fadeToggle("fast");
+	});
+	$(".favs.icon").on("hover", function(){
+		$(".tooltip-header.menu-favs").stop().fadeToggle("fast");
+	});
+	$(".tooltip-publicar .AGclose").on("click", function(e) {
+		e.preventDefault();
+		$(this).parents(".tooltip-publicar").hide();
+	});
+
+	setTimeout(
+	    function(){
+	        $(".tooltip-publicar").fadeOut();
+	    }, 20000);
+
+</script>
+
+
+                
+         
+            </div>
+        </div>
+    </header>
+    <div class="header_page ">
+        <div class="box-title">
+            
+
+     
+    <div class="Ruteo clearfix">
+        <div class="Izq">
+            <h5>
+                 <a href="/" title="Inmuebles, Propiedades, Inmobiliarias en Argentina">Argenprop</a>
+            </h5>
+            <h5>
+                <a href="/Propiedades-Caballito-Capital-Federal/cpQ1KrbQ1KpQ1KprQ2KpaQ135Kaf_816Kaf_804Kl_2102Kb_8KvnQ" id="listAvisos" name="listAvisos" title="Resultado de Búsqueda"><div>Resultado de B&#250;squeda</div></a>
+            </h5>
+            
+            
+            <h5>
+                <a href="/Propiedades/Buscar?sp.CurrentPage=1&amp;sp.af_804=804&amp;sp.af_816=816" id="listAvisos" name="listAvisos" title="Cochera en Venta"><div>Cochera en Venta</div></a>
+                            
+            </h5>
+            
+            <h5>
+                <a href="/Propiedades/Buscar?sp.CurrentPage=1&amp;sp.RegionBusqueda=1&amp;sp.Pais=1&amp;sp.Partido=135&amp;sp.af_804=804&amp;sp.af_816=816" id="listAvisos" name="listAvisos" title="Capital Federal"><div>Capital Federal</div></a>
+                      
+                            
+            </h5>
+            
+            <h5>
+                <a href="/Propiedades/Buscar?sp.CurrentPage=1&amp;sp.RegionBusqueda=1&amp;sp.Pais=1&amp;sp.Partido=135&amp;sp.af_804=804&amp;sp.af_816=816&amp;sp.Barrios_8=8" id="listAvisos" name="listAvisos" title="Caballito"><div>Caballito</div></a>
+            </h5>
+
+            
+            <h2>
+                Cochera en Venta
+                                        
+                                en
+                                
+                Dr J F Aranguren
+                                al
+                                10600
+                   
+            </h2>
+
+        </div>
+    </div>
+    
+ 
+
+            <h1 class="title-text">
+           Cochera en venta en Caballito - Capital Federal
+</h1>
+            
+        </div>
+        
+    </div>
+     
+    
+    
+    
+    <div class="gird-980 clearfix">    
+        
+    <div class="jqmWindow" id="jqmContacto"></div>
+    <div class="jqmWindow" id="jqmEnviar"></div> 
+   
+        
+                  <input style="display:none" class="avisoitem"  idVisibilidad='7145782' value ='7145782'  />
+
+            
+
+    
+    <div class="contAlert" style="display: none">
+        <div class="AlertaFin">
+             <p></p>
+        </div>
+    </div>
+
+    <div class="clearfix dataContainer" style="width: 980px;" >
+        <div class="details clearfix">
+			<div class="header-impresion" style="width: 714px;"></div>
+            <div class="head" style="width: 100%;">
+                <h2 class="address">
+            
+                    <span style="max-width: 540px;">Dr J F Aranguren 10600</span>
+                    
+                
+                </h2>
+            </div>
+
+            
+                       
+            
+            <h2 class="title-description">           
+                <span class="type">Cochera en venta en Caballito - Capital Federal</span>
+            </h2>
+
+            <div class="part1" style="width:650px;">
+  
+                <div class="data" style="width: 100%;">
+                    <div class="box-popUp modal-map" id="modalMap">
+                        <div class="popUp-shadow" onclick="$('.box-popUp').hide();"></div>                           
+                        <div class="box-img">    
+                             <div class="datos-top-mapa">
+                                <div class="avisoDetalles">
+                                        <h3 class="address">            
+                                              <span style="max-width: 540px;">Dr J F Aranguren 10600</span>                                        
+                                                
+                                            <span class="type">- Cochera en venta en Caballito - Capital Federal</span>
+                
+                                        </h3>
+                                    <a onclick= "$('.box-popUp').hide();" title="Cerrar" class="AGclose"></a>
+                                </div>                             
+                            </div>
+			                <div style="width: 294px; height: 200px;">
+                                <div class="map" id="map" ></div>
+                                <div class="message">
+                                    <span class="info"></span>
+                                </div>
+                                <div id="staticMap"></div>
+                            </div>
+                        </div>
+                   </div>
+
+                    <div id="divCaptcha"></div>
+         
+                    <!--popUp para ver telefono -->
+                    <div class="box-popUp-opciones">
+                          <div class="popUp-shadow" onclick="closeModalOpciones();"></div>
+                            
+                            <div class="caja">
+                                <a href="javascript: closeModalOpciones();" title="Cerrar" class="AGclose"></a>                                                  
+                                <a class="imageBigTel"></a>
+                                <span style="font-weight:300" class="popUpRef"> Para ver el tel&eacute;fono del anunciante deb&eacute;s estar logueado en el sitio.</span>
+                                    <fieldset class="btn-soyNuevo">
+                                        <a href="#" onclick="globalRegisterAndCallbackVerTelefono('/Contactos/ContactoVendedorFichaVerTelefono'); return false;" title="Soy Nuevo"  id="botonSoyNuevo" rel="nofollow">
+                                            <span>Soy Nuevo</span>
+                                        </a>
+                                     </fieldset>
+                                     <fieldset class="btn-tengoCuenta">
+                                        <a rel="nofollow" href="#" onclick="globalLoginAndCallbackVerTelefono('/Contactos/ContactoVendedorFichaVerTelefono'); return false;" title="Tengo Cuenta" id="botonTengoCuenta">
+                                            <span style="top: 217px;left: 250px; position:absolute">Ya tengo cuenta</span>
+                                        </a>
+                                    </fieldset>                                                    
+                            </div>
+                   </div>
+
+
+                    <!--popUp para contactar -->
+                    <div class="box-popUp-opciones-contactar">
+                        <div class="popUp-shadow" onclick="closeModalOpcionesContactar();"></div>
+                           
+                            <div class="caja">     
+                                <a href="javascript: closeModalOpcionesContactar();" title="Cerrar" class="AGclose"></a>                                                   
+                                 <p class="imageBigBubble"></p>                 
+                                <span class="main-text"> Para que el anunciante te pueda responder necesitamos un email</span>
+                                    <fieldset class="btn-soyNuevo">
+                                        <a href="javascript:void(0);" rel="nofollow" onclick="globalRegisterAndCallbackContactar('/Contactos/ContactoVendedorFicha'); return false;" title="Soy Nuevo" >
+                                            <span>Soy Nuevo</span>
+                                        </a>
+                                   </fieldset>
+                                 <fieldset class="btn-tengoCuenta">
+                                    <a href="#" rel="nofollow" onclick="globalLoginAndCallbackContactar('/Contactos/ContactoVendedorFicha'); return false;" title="Tengo Cuenta">
+                                        <span>Ya tengo cuenta</span>
+                                    </a>
+                                </fieldset>                                                   
+                        </div>                     
+                   </div>
+                             
+                    
+                 
+                        <div class="sin-foto-container actions">
+                             <img src="/Content/images/sinFoto.jpg" border="0" width="650" height="484" />  
+                               
+                         </div>
+                      
+
+
+    <!--<div class="title" style="width: 100%; color:black; font-weight: bold;">Caracter&iacute;sticas:</div>-->
+        
+    <div class="section instalations ">
+        <div class="title-details" style="width:100%;">
+            <span>
+            Características:
+            </span>
+        </div>
+        <div class="fields" style="width:98%;">
+            
+                    <div class="detailItem">
+                        <div class="field">tipo de cobertura</div>
+                        <div class="value">                     
+                            Cubierta 
+                                
+                        
+                        </div>
+                        
+                    </div>
+            
+                    <div class="detailItem">
+                        <div class="field">tipo de coche</div>
+                        <div class="value">                     
+                            Mediano 
+                                
+                        
+                        </div>
+                        
+                    </div>
+            
+                    <div class="detailItem">
+                        <div class="field">tipo de cochera</div>
+                        <div class="value">                     
+                            Fija 
+                                
+                        
+                        </div>
+                        
+                    </div>
+            
+                    <div class="detailItem">
+                        <div class="field">tipo de acceso</div>
+                        <div class="value">                     
+                            Rampa Fija 
+                                
+                        
+                        </div>
+                        
+                    </div>
+            
+        </div>
+    </div>
+
+                    
+
+
+    <div class="section basic ">
+        <div class="title-details" style="width:100%;">
+            <span>
+            Datos Básicos:
+            </span>
+        </div>
+        <div class="fields" style="width:98%;">
+            
+                    <div class="detailItem">
+                        <div class="field">tipo de operación</div>
+                        <div class="value">                     
+                            Venta 
+                                
+                        
+                        </div>
+                        
+                    </div>
+            
+                    <div class="detailItem">
+                        <div class="field">precio</div>
+                        <div class="value">                     
+                            USD 21.500 
+                                
+                        
+                        </div>
+                        
+                    </div>
+            
+        </div>
+    </div>
+
+                    
+
+
+                    
+                   
+                    
+
+
+                    
+
+
+                    
+
+
+                   
+                    
+
+
+                   
+                    
+
+
+                    
+
+
+                    
+
+
+                    
+                            <div class="section additionalInfo">
+                                <div class="title" style="width: 100%; color:black; font-weight: bold;">Informaci&oacute;n adicional:</div>
+                                <div class="fields">
+                                    Zona:Normal	-	Asfalto	-	
+                                </div>
+                            </div>
+                           
+                    <div class="code-container">
+                                
+                                    C&oacute;digo de ficha: <span> AA42206 - Adinco</span>                    
+                    </div>
+                    
+                        
+                    <div class="section printFooter" style="width: 100%;">
+                           
+                                <div class="contactFooter">
+                                    <div class="content">
+                                      <fieldset style="margin-top:15px">
+                                        <span style="max-width: 540px;" class="direccion">Dr J F Aranguren 10600</span>
+                                      </fieldset>
+
+                                      <fieldset>
+                                        <span class="callejero">Caballito - Capital Federal</span>
+                                      </fieldset>
+
+                                       
+                                        <fieldset style="margin-top:10px">
+								                <span class="Detalle Precio">USD 21.500</span>
+                                         </fieldset>
+                                        
+
+                                        <fieldset style="margin-top:20px">
+                                            <span class="type">Cochera en venta</span>
+                                        </fieldset>
+                                       <fieldset style="margin-top:10px">
+                                        <div class="datos-footer">
+                                            <div class="avisoDetalles">
+                                                    
+        
+     <div class="datoscomunes" title="Cochera: Fija | Acceso: Rampa Fija | Cobertura: Cubierta | Coche: Mediano">
+        
+     
+                  <p class="datocomun-valor-abbr">Cochera:  Fija </p>
+             
+                  <p class="datocomun-valor-abbr">Acceso:  Rampa Fija </p>
+             
+                  <p class="datocomun-valor-abbr">Cobertura:  Cubierta </p>
+             
+                  <p class="datocomun-valor-abbr">Coche:  Mediano </p>
+             
+
+        </div>
+
+                                            </div>                             
+                                        </div>
+                                      </fieldset>
+                                     
+                                        <fieldset class="btn-contactar-vendedor">
+                                        <a rel="nofollow" href="#" title="Ver datos del anunciante" class="btn-contactar">
+                                            Consultar
+                                        </a>
+                                    </fieldset>
+                                       <fieldset class="contact-favoritos favoritos-footer" >    
+                                        <div class="box-mas-info cf" style="margin-top: 10px;margin-left: 6px;">                              
+                 
+                                            <a rel="nofollow" name="eliminarFav7145782" href="javascript:void(0);" title="Eliminar de Favoritos" style="display: none" onclick="$(this).data('clicked',true); eliminarFavorito(7145782);return false;">
+                                                <span class="icon delete"></span>
+                                            <a rel="nofollow" name="agregarFav7145782" title="Guardar en Favoritos" href="javascript:void(0);" style="display: block" onclick="$(this).data('clicked',true); guardarAvisoEnFavoritos(7145782);return false;">
+                                                <span class="icon save"></span>
+                                            </a>
+                
+                                        </div>
+                                        </fieldset>
+                                    
+
+                                  </div>
+                                </div>
+                            	
+                    </div>
+             
+
+                    
+
+                 
+
+                </div>                
+            </div>
+
+            <div class="part2" style="width: 310px; margin-left: 10px;">
+                
+            <div class="grooveBottom" style="width:300px; margin-bottom:10px;">
+                <div class="Botones clearfix" style="width: 107px; background-color:white; float:left; margin-left:-7px">
+    				<div class="EnvMail">
+                        <div class="others">                        
+                                                
+                            <a rel="nofollow" href="#" title="Enviar" class="Enviar EnviarLink" id="enviarMailAmigo"></a><span class="pipe">|</span>
+                                                
+    					    <a rel="nofollow" href="#" onclick="javascript:window.open('/Avisos/ImprimirPreview?sp.CurrentPage=1&sp.RegionBusqueda=1&sp.Pais=1&sp.Provincia=2&sp.Partido=135&sp.af_816=816&sp.af_804=804&sp.Localidades_2102=2102&sp.Barrios_8=8&idVisibilidad=7145782&descripcion=Cochera-en-Venta-en-Capital-Federal', 'Imprimir', 'location = 1, status = 1, toolbar = 0, menubar = 0, scrollbars = 1, width = 800, height = 800')" title="Imprimir" class="Imprimir" ></a>
+    		
+                        </div>                       
+                                                 
+    				</div>
+    			</div>
+                          
+                                                
+                
+                                <div class="price" style="height: 40px; background-color:white; float:right;">
+                                  
+								                <li class="clearfix"><span class="Dato"></span><span class="Detalle Precio">USD 21.500</span></li>
+                                    
+                              </div> 
+                        
+            </div>
+                
+                
+               <h2 class="titulo-ficha">
+                 Cochera en Venta en Capital Federal, Caballito 
+                </h2>
+                
+               <div class="others">   
+  		    
+                    <div class="contactMargin">
+                        <div class="contactFormContainer"></div>
+                        <div class="btn-contactar-vendedor">
+                             <a rel="nofollow" href="#" title="Ver datos del anunciante"  id="botonContactarVendedor">
+                                Consultar
+                             </a>
+                        </div>
+                    
+                        
+
+                            <div class="contact-favoritos">    
+                                <div class="box-mas-info cf">                              
+                                    
+                                        <a rel="nofollow" class="fl" name="eliminarFav7145782" href="javascript:void(0);" title="Eliminar de Favoritos" style="display: none" onclick="$(this).data('clicked',true); eliminarFavorito(7145782);return false;">
+                                            <span class="icon delete"></span>
+                                        <a rel="nofollow" class="fl" name="agregarFav7145782" title="Guardar en Favoritos" href="javascript:void(0);" style="display: block" onclick="$(this).data('clicked',true); guardarAvisoEnFavoritos(7145782);return false;">
+                                            <span class="icon save"></span>
+                                        </a>    
+                                        <!--[if gt IE 8]> 
+                                                                                                                    
+                                                     
+                                                <!-- AddThis Button BEGIN -->
+                                                <div class="addthis_toolbox addthis_default_style ">                                           
+                                                    <a class="addthis_button_compact"></a>
+                                                </div>
+                                                <script>
+
+                                                    var addthis_config = {
+
+                                                        data_track_clickback: true,
+                                                        ui_click: true,
+                                                        services_exclude: 'amazonwishlist, aviary, camyoo, care2, classicalplace, doower, dotnetkicks, dotnetshoutout, embarkons, farkinda, flosspro, fnews, forgetfoo, gamesnetworks, globalgrind, gluvsnap, grumper, hazarkor, hedgehogs, hipstr, w3validator, investorlinks, mindbodygreen, n4g, pdfonline, quantcast, slashdot, technet, tellmypolitician, tipd, domaintoolswhois, windycitizen',
+                                                        services_compact: 'facebook, twitter, linkedin, myspace, google, delicious, favorites, Messenger, gmail, print, email, meneame, blogger, hotmail, more',
+                                                        ui_header_color: "#FFF",
+                                                        ui_header_background: "#3B0B0B",
+                                                        ui_offset_top: 270,
+                                                        ui_offset_left: 0,
+                                                        ui_use_addressbook: true
+                                                    };
+                                                </script>
+                                                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=inmueblesclarinaddthis"></script>
+                                                <!-- AddThis Button END -->
+                                                <script>
+                                                    var twitterDescription = 'Cochera en Venta en Capital Federal, Caballito ';
+                                                    var twitterShareText = twitterDescription + ' : {{url}} #inmueblesclarin'; //19url + 20
+                                                    var addthis_share = { templates: { twitter: twitterShareText } };
+                                                </script>          
+                                          <![endif]-->       
+                                    
+
+                                </div>
+                            </div>
+          
+                            <div class="clearfix fl send-information">                                    
+                                    <label class="last"><input checked="checked" id="contactoVendedor.AceptaRecibirInformacion" name="contactoVendedor.AceptaRecibirInformacion" type="checkbox" value="true" /><input name="contactoVendedor.AceptaRecibirInformacion" type="hidden" value="false" />Acepto que me env&iacute;en novedades de Argenprop.com.</label>                
+                            </div>
+
+                               <a href="/Propiedades/Buscar?sp.Vendedor=101110" title="Ver m&aacute;s inmuebles del anunciante" class="btn-sidebar">
+                                    <span id="verMasInmueblesAnunciante">Ver m&aacute;s inmuebles del anunciante</span>
+                                </a>
+                    </div>
+ 
+	           </div>
+                <div id='div-gpt-ad-1448908075635-0' class=banner-aside-top style='width:300px; height:250px; display:none;'><script type='text/javascript'>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1448908075635-0'); });</script></div>
+                   <div class="similarAdsMargin">
+                    <div class="similarAds-form-holder">
+                        
+                      <div class="similarAds-form">
+                          <form id="formGrid" method="post" action="/Avisos/AnunciosSimilares">
+                              <input type="hidden" id="sp.CurrentPage" name="sp.CurrentPage" value="1" /><input type="hidden" id="sp.RegionBusqueda" name="sp.RegionBusqueda" value="1" /><input type="hidden" id="sp.Pais" name="sp.Pais" value="1" /><input type="hidden" id="sp.Provincia" name="sp.Provincia" value="2" /><input type="hidden" id="sp.Partido" name="sp.Partido" value="135" /><input type="hidden" id="sp.af_816" name="sp.af_816" value="816" /><input type="hidden" id="sp.af_804" name="sp.af_804" value="804" /><input type="hidden" id="sp.Localidades_2102" name="sp.Localidades_2102" value="2102" /><input type="hidden" id="sp.Barrios_8" name="sp.Barrios_8" value="8" />
+                              <input type="hidden"  name="idAviso" value ='3344044' />
+                              <input id="ViewNameResult" name="ViewNameResult" type="hidden" value="-" />
+                              <input id="ViewNameClass" name="ViewNameClass" type="hidden" value="-" />
+                          </form>
+                      </div>
+                        
+                    </div>
+
+                </div>  
+
+                
+                <div class="banner-right-1">
+                    <script> sas_renderMode = 3;sas_scriptDomain = 'http://ww619.smartadserver.com';var sas_target = 'kw_inmTipoinmueble=5;kw_InmOperacion=1;kw_InmPais=1;kw_InmZona=;kw_InmProvincia=2;kw_InmPartido=135;kw_InmLocalidad=2102;kw_InmBarrio=8';function readCookie(name) {return (name = new RegExp('(?:^|;\\s*)'+('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(document.cookie))&& name[1];}if( typeof(sas_target)=='undefined' || sas_target==''){ try{ var sas_target = readCookie('cxSegmentos'); }catch(e){};}else{ try{ if(sas_target[sas_target.length-1]!=';')sas_target+=';';sas_target = sas_target+sas_target+readCookie('cxSegmentos'); }catch(e){};}sas_pageid = "50075/(ficha)";</script> 
+                    
+               <!-- AdServer - Comienzo Top950x90 950x90 -->
+                <script type="text/javascript">sas_formatid=12952;SmartAdServerAjax(sas_pageid,sas_formatid,sas_target);</script><noscript><a href="http://ww619.smartadserver.com/call/pubjumpi/50075/(ficha)/12952/S/[timestamp]/kw_inmTipoinmueble=5;kw_InmOperacion=1;kw_InmPais=1;kw_InmZona=;kw_InmProvincia=2;kw_InmPartido=135;kw_InmLocalidad=2102;kw_InmBarrio=8/?"target="_blank"><img src="http://ww619.smartadserver.com/call/pubi/50075/(ficha)/12952/S/[timestamp]/kw_inmTipoinmueble=5;kw_InmOperacion=1;kw_InmPais=1;kw_InmZona=;kw_InmProvincia=2;kw_InmPartido=135;kw_InmLocalidad=2102;kw_InmBarrio=8/?"border="0"alt=""/></a></noscript>
+                <!-- AdServer - Fin Top950x50 950x90 -->
+
+                </div>
+
+                <div class="banner-right-2">
+                    <script> sas_renderMode = 3;sas_scriptDomain = 'http://ww619.smartadserver.com';var sas_target = 'kw_inmTipoinmueble=5;kw_InmOperacion=1;kw_InmPais=1;kw_InmZona=;kw_InmProvincia=2;kw_InmPartido=135;kw_InmLocalidad=2102;kw_InmBarrio=8';function readCookie(name) {return (name = new RegExp('(?:^|;\\s*)'+('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(document.cookie))&& name[1];}if( typeof(sas_target)=='undefined' || sas_target==''){ try{ var sas_target = readCookie('cxSegmentos'); }catch(e){};}else{ try{ if(sas_target[sas_target.length-1]!=';')sas_target+=';';sas_target = sas_target+sas_target+readCookie('cxSegmentos'); }catch(e){};}sas_pageid = "50075/(ficha)";</script> 
+                    
+               <!-- AdServer - Comienzo Top950x90 950x90 -->
+                <script type="text/javascript">sas_formatid=12953;SmartAdServerAjax(sas_pageid,sas_formatid,sas_target);</script><noscript><a href="http://ww619.smartadserver.com/call/pubjumpi/50075/(ficha)/12953/S/[timestamp]/kw_inmTipoinmueble=5;kw_InmOperacion=1;kw_InmPais=1;kw_InmZona=;kw_InmProvincia=2;kw_InmPartido=135;kw_InmLocalidad=2102;kw_InmBarrio=8/?"target="_blank"><img src="http://ww619.smartadserver.com/call/pubi/50075/(ficha)/12953/S/[timestamp]/kw_inmTipoinmueble=5;kw_InmOperacion=1;kw_InmPais=1;kw_InmZona=;kw_InmProvincia=2;kw_InmPartido=135;kw_InmLocalidad=2102;kw_InmBarrio=8/?"border="0"alt=""/></a></noscript>
+                <!-- AdServer - Fin Top950x50 950x90 -->
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    
+    <script src="/Avisos/LogVisitas?idVisibilidad=7145782&idOrigen=AA42206&tipoPropiedad=Cochera&tipoOperacion=Venta&direccion=Capital%20Federal%7CCaballito&precio=21500&idVendedor=101110&tipoDestaque=3"></script>
+    <script src="http://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
+      
+ 
+     <script>
+         var map = new Map("map");
+         var environment = "http://mapas.api.argenprop.com/";
+         map.setServerUrl(environment);
+
+         var tag = document.createElement('script');
+  
+         tag.src = "../../Scripts/player_api.js";
+         var firstScriptTag = document.getElementsByTagName('script')[0];
+         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+         var players = new Array();         
+         var playerAux;
+
+         function onYouTubeIframeAPIReady() {
+
+             $('div[ytvideo]').each(function () {                 
+                 var videoIdYT = getYTVideoId($(this).attr('src'));
+                 var divId = $(this).attr('id');
+
+                 playerAux = new YT.Player(divId, {
+                     height: '487',
+                     width: '100%',
+                     videoId: videoIdYT,
+                     events: {
+                         'onReady': onPlayerReady,
+                         'onStateChange': onPlayerStateChange
+                     }
+                 });
+
+                 $("#"+divId).addClass("img-wrapper-image");               
+                 players.push(playerAux);
+
+             });
+             
+             stopAllVideos();
+         }
+
+         function getYTVideoId(url) {
+             var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+             var match = url.match(regExp);
+             if (match && match[2].length == 11) {
+                 return match[2];
+             } else {
+                 return null;
+             }
+
+         }
+
+         function onPlayerReady(event) {
+             event.target.playVideo();
+         }
+
+         var done = false;
+         function onPlayerStateChange(event) {
+             if (event.data == YT.PlayerState.PLAYING && !done) {
+                              
+                 pauseAllVideos();
+
+                 done = true;
+             }
+         }
+
+         function stopVideo() {
+             playerAux.stopVideo();
+         }
+
+         function stopAllVideos() {             
+             for(i =0; i< players.length; i++){
+                 var playerAux = players[i];
+                 stopVideo(playerAux);
+             }            
+         }
+
+
+         function pauseAllVideos() {             
+             for (i = 0; i < players.length; i++) {
+                 var playerAux = players[i];
+                 playerAux.pauseVideo();
+             }
+         }
+
+
+        var addthis_config = {
+            data_track_clickback: true
+        }
+		var mapLoaded = false;
+
+        var latitud = parseFloat();
+        var longitud = parseFloat();
+		
+        var direccion = 'Dr J F Aranguren 10600';
+
+        var tooltip = '<div>' +
+                          '<div class="arrow"></div>' +
+                          '<a href="#" class="text">' +
+                              direccion +
+                          '</a>' +
+                      '</div>';
+
+
+        map.setTracker({ tipo: "Dinamico", ubicacion: "Ficha", idAviso: "3344044", idOrigen: "AA42206", sistema: "Argenprop" });
+        
+        var reLoadForm = function () {
+               var $form = $(".contactar-anunciante-form");
+               var $idVisibilidad = 7145782
+               $spinner = $("<div></div>");
+               $spinner.css("top", "-1000px");
+               $spinner.height("200px");
+               $spinner.css("border", "1px solid gray");
+               $spinner.css("border-bottom", 0);
+               $spinner.css("border-right", 0);
+               $spinner.css("border-left", 0);
+
+               var opts = {
+                   lines: 13,
+                   width: 4,
+                   trail: 60
+               };
+
+               var formsSpinner = new Spinner(opts).spin($spinner[0]);
+               $form.html($spinner);
+
+               $.ajax({
+                   type: "POST",
+                   url: "/Contactos/ContactoVendedorFichaReloadForm",
+                   data: { idVisibilidadAviso: $idVisibilidad, contentType: "json" },
+                   success: function (data) {
+
+                       var regex = "ContieneError";
+                       if (data.search(regex) != -1) { //contiene errorers, levantar misma div
+                           $(".contactar-anunciante-form-holder").html(data);
+                       }
+                       else {
+                           $form.html(data);
+                           $("#botonContactarVendedor").removeClass("btn-disabled");
+                       }
+                   }
+               });
+
+        };
+
+         AP.AddLoggedHandler(function () {
+            var $formGroupEmail = $(".form-group-email-ficha");
+            $formGroupEmail.removeClass("error");
+            var $inputEmail = $formGroupEmail.find("input");
+            $inputEmail.val(APL.UserData.Email).attr("disabled", true);
+        });
+
+        $(".actions .first-link").off('click').on("click", function (e) {
+
+            if (!mapLoaded) {
+                $(".box-popUp").css("display", "inline-block");
+                map.removeMarkers();
+                var marker = new Marker(false);
+                marker.setImages('Content/1024/img/maps/over_grande.png');
+                marker.setPosition(latitud, longitud);
+                marker.setTooltip(tooltip);
+                
+                map.setZoom(17);
+                map.setSize(840, 575);
+                map.setView(latitud, longitud);
+                map.initialize();
+                map.setLegend("Argenprop Mapas");
+                map.setMarker(marker, true);
+                mapLoaded = true;
+            }
+            else 
+                $(".box-popUp").show();
+        });
+     
+        
+
+        $(document).on("ready", function () {
+
+            var isVigenteYActiva = 'True';
+
+            $("#slideshow .img-wrapper").on("click", function () {
+                $("#lightbox-ficha").show();
+                
+                
+                    AGFicha.lightboxNoSlider();
+                 
+            });
+ 
+            //tracking de Visita
+            $.track("Ficha_Visita", { idAviso: "3344044", idOrigen: "AA42206", idVisibilidad: "7145782", sistema: "Argenprop" });
+
+            $spinner = $("<div class='spinner-div'></div>");
+            
+            var opts = {
+                lines: 13, // The number of lines to draw
+                width: 4, // The line thickness
+                trail: 60, // Afterglow percentage
+            };
+
+            var formsSpinner = new Spinner(opts).spin($spinner[0]);
+            $(".contactFormContainer").append($spinner);
+            $(".contactFormContainer").load("/Contactos/ContactoVendedorFichaInitialize" + "?visibilidadId=7145782&accion=&accion=", function (response, status, xhr) {
+                if (status == "error") {
+                    $(".contactFormContainer").html("<span style='color:red'>Error al cargar el formulario de contacto. Intente recargando la p&aacute;gina</span>")
+                };                  
+            });
+
+
+            var UrlAvisosSimilares = '/Avisos/AnunciosSimilares';            
+
+            var divform = $(".similarAds-form");
+            var inputs = $("#formGrid");
+            var divfromholder = $(".similarAds-form-holder");
+
+            $.ajax({
+                url: UrlAvisosSimilares,                
+                data: inputs.serialize(),                
+                success: function (data) {
+                    
+                    //se remueve la clase que valida los errores, no existe otra manera mas sencilla: http://forums.asp.net/t/1639619.aspx
+                    var regex = new RegExp('input-validation-error', 'g');
+                    data = data.replace(regex, "");
+
+                    divfromholder.html(data);
+                }
+            });
+
+            $(".contactFooter .btn-contactar").on("click", function (e) {
+                e.preventDefault();                
+                AGFicha.goToContactForm();
+            });
+
+                if (isVigenteYActiva.toLowerCase() === "false") {
+                    $(".btn-contactar-vendedor").remove();
+                    $(".contact-favoritos").remove();
+                    $(".send-information").remove();
+                    $(".contactFormContainer").remove();
+                }
+
+
+        });
+
+
+        var urlEnviar = "/Avisos/EnviarAUnAmigoFormulario?idVisibilidadAviso=7145782";
+        var openTriggerEnviar = '#enviarMailAmigo';
+        var targetEnviar = '#jqmEnviar';
+        var closeTriggerEnviar = '[title=Cerrar]';
+        var formEnviar = '#enviarAmigo';
+        
+        formAjaxPopUp(urlEnviar, openTriggerEnviar, targetEnviar, formEnviar, closeTriggerEnviar);   
+
+
+        function SetUrlFromReferrer() {
+            var urlReferrer = $('#UrlReferrer').val();
+
+            if (urlReferrer != '') {
+                $('#listAvisos').attr('href', urlReferrer);
+            }
+        }
+
+        var addthis_config =
+        {
+            ui_click: true,
+            //services_exclude: 'email,print,meneame,reddit,more,technorati,favorites,google,live,blogger'
+            services_exclude: 'email,print'//facebook,twitter/
+            //services_compact : 'linkedin,myspace,sonico,google,blogger,reddit,delisius,more'
+        }
+
+        function showFullScreen(event, url) {
+            
+            event.stopPropagation();
+            window.open(url, '_blank');
+            return false;
+            
+        }
+
+        var urlAgregarFavorito = '/Usuarios/AgregarFavorito?idVisibilidad=0';
+        var urlEliminarFavorito = '/Usuarios/EliminarFavorito?idVisibilidad=0&ContentType=json';
+        var urlContactoVendedorFicha = '/Contactos/ContactoVendedorFicha';
+</script>
+    <input id="origen" name="origen" type="hidden" value="AA42206 - Argenprop" />
+    <input id="UrlReferrer" name="UrlReferrer" type="hidden" value="" />
+    <script src="/bundles/sliderficha?v=5vzzxrwidrM1xPEUntkgLFOJrygPEPCPa3kPp_3MQRc1"></script>
+
+    <!-- Begin comScore Inline Tag 1.1111.15 --> 
+<script type="text/javascript"> 
+       //Calculo timestamp local y GMT
+       var timestamp = new Date().getTime();
+       var dt = new Date()
+       var tz = -dt.getTimezoneOffset()/60;
+       var gmtZone = 'GTM'+ tz;
+
+// <![CDATA[
+function udm_(a){
+	var b="comScore=",c=document,d=c.cookie,e="",f="indexOf",g="substring",h="length",i=2048,j,k="&ns_",l="&",m,n,o,p,q=window,r=q.encodeURIComponent||escape;if(d[f](b)+1)for(o=0,n=d.split(";"),p=n[h];o<p;o++)m=n[o][f](b),m+1&&(e=l+unescape(n[o][g](m+b[h])));a+=k+"_t="+ +(new Date)+k+"c="+(c.characterSet||c.defaultCharset||"")+"&c8="+r(c.title)+e+"&c7="+r(c.URL)+"&c9="+r(c.referrer),a[h]>i&&a[f](l)>0&&(j=a[g](0,i-8).lastIndexOf(l),a=(a[g](0,j)+k+"cut="+r(a[g](j+1)))[g](0,i)),c.images?(m=new Image,q.ns_p||(ns_p=m),m.src=a):c.write("<","p","><",'img src="',a,'" height="1" width="1" alt="*"',"><","/p",">")
+}
+function uid_call(a, b){
+	ui_c2 = 6906409;
+	ui_ns_site = 'argenprop';
+	window.b_ui_event = window.c_ui_event != null ? window.c_ui_event:"",window.c_ui_event = a;
+	var ui_pixel_url = 'http://b.scorecardresearch.com/p?c1=2&c2='+ui_c2+'&ns_site='+ui_ns_site+'&name='+a+'&ns_type=hidden&type=hidden&ns_ui_type='+b;
+	var b="comScore=",c=document,d=c.cookie,e="",f="indexOf",g="substring",h="length",i=2048,j,k="&ns_",l="&",m,n,o,p,q=window,r=q.encodeURIComponent||escape;if(d[f](b)+1)for(o=0,n=d.split(";"),p=n[h];o<p;o++)m=n[o][f](b),m+1&&(e=l+unescape(n[o][g](m+b[h])));ui_pixel_url+=k+"_t="+ +(new Date)+k+"c="+(c.characterSet||c.defaultCharset||"")+"&c8="+r(c.title)+e+"&c7="+r(c.URL)+"&c9="+r(c.referrer)+"&b_ui_event="+b_ui_event+"&c_ui_event="+c_ui_event,ui_pixel_url[h]>i&&ui_pixel_url[f](l)>0&&(j=ui_pixel_url[g](0,i-8).lastIndexOf(l),ui_pixel_url=(ui_pixel_url[g](0,j)+k+"cut="+r(ui_pixel_url[g](j+1)))[g](0,i)),c.images?(m=new Image,q.ns_p||(ns_p=m),m.src=ui_pixel_url):c.write("<p><img src='",ui_pixel_url,"' height='1' width='1' alt='*'></p>");
+}
+udm_('http'+(document.location.href.charAt(4)=='s'?'s://sb':'://b')+'.scorecardresearch.com/b?c1=2&c2=6906409&ns_site=argenprop&name=fichas-de-inmuebles.Cochera.Venta.Argentina.Capital Federal.Caballito.Inmobiliaria.Dolares.21500.0.7145782'+'&timestamp='+timestamp+'|'+gmtZone);
+// ]]>
+</script>
+<noscript><p><img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=6906409&amp;ns_site=argenprop&amp;name=fichas-de-inmuebles.Cochera.Venta.Argentina.Capital Federal.Caballito.Inmobiliaria.Dolares.21500.0.7145782" height="1" width="1" alt="*"></p></noscript> 
+<!-- End comScore Inline Tag -->
+<script language="JavaScript1.3" src="http://b.scorecardresearch.com/c2/6906409/ct.js"></script>
+
+
+ 
+    </div>    
+       
+        
+    
+
+    
+    <div class="footer clearfix">
+		<div class="column">
+            <div class="footer-afip">
+                <a href="http://qr.afip.gob.ar/?qr=-SEvGIJq2b1CWny94Qactw,," target="_F960AFIPInfo"></a>
+             </div>
+            <div class="footer-redes">
+                    <ul>
+                        <li class="link_facebook"><a href="https://www.facebook.com/Argenprop" target="_blank">Facebook</a></li>
+                        <li class="link_goggle"><a href="https://plus.google.com/+argenprop" target="_blank">Google+</a></li>
+                        <li class="link_twitter"><a href="https://twitter.com/argenprop" target="_blank">Twitter</a></li>
+                        <li class="link_pinterest"><a href="http://www.pinterest.com/argenprop/" target="_blank">Pinterest</a></li>
+                        <li class="link_youtube"><a href="http://www.youtube.com/user/Argenprop" target="_blank">YouTube</a></li>
+
+                    </ul>
+            </div>
+            <div class="footer-copyrigth">
+                                
+                <a href="/StaticView/Terminos" title="T&eacute;rminos y Condiciones">T&eacute;rminos y Condiciones |</a>
+                <a href="/StaticView/Privacidad" title="Normas de Confidencialidad y Privacidad">Normas de Confidencialidad y Privacidad</a>
+                <span>Clarin Digital | Todos los derechos reservados.</span>
+            </div>
+        </div>
+        <div class="column">
+			<div class="footer-links-agea">
+                <div class="logo-agea">
+   
+                </div>
+            </div>
+            <div class="footer-links">
+                <ul class="links_top">
+                    <li><a href="/StaticView/Ayuda">Ayuda</a></li>
+                </ul>
+                <div>
+                    <p>0810-999-2527 | Lunes a viernes de 9 a 18hs</p>
+                </div>
+                <ul class="links_agea">
+                    <li>
+                        <a href="http://www.clarin.com" target="_blank" title="Ver el sitio clarin.com">clarin.com</a><span></span>
+                    </li>
+                    <li>
+                        <a href="http://www.ole.com.ar/" target="_blank" title="Ver el sitio ole.com.ar">ole.com.ar</a><span></span>
+                    </li>
+                    <li>
+                        <a href="http://www.biencasero.com/" target="_blank" title="Ver el sitio biencasero.com">biencasero.com</a>
+                    </li>
+                </ul>  
+            </div>
+
+        </div>    
+	</div>
+     
+
+    <script type="text/javascript">
+        var rnd = (new String(Math.random())).substring(2, 8) + (((new Date()).getTime()) & 262143); 
+    </script>        
+
+    <script async src="https://apis.google.com/js/plusone.js">{ lang: 'es-419' }</script>    
+
+    <script type="text/javascript">
+        /*Creamos variables globales que se usaran en los distintos js*/
+        var getUserData = '/Usuarios/GetUserData',
+            urlFormLogin = '/Usuarios/GetUserLoginForm',
+            usuariosLoginUrl = "/Usuarios/LoginRememberMe?returnUrl=http%3A%2F%2Fwww.argenprop.com%2FPropiedades%2FDetalles%2F7145782--Cochera-en-Venta-en-Capital-Federal",
+            usuariosRegisterUrl = "/Usuarios/CreateGenericPopUp",
+            usuariosRegisterDummyUrl = "/Usuarios/CreateDummyGenericPopUp",
+            captchaVerifyUrl = "/Usuarios/ValidateCaptchaPopUp",
+            usuariosReenviarConfirmacionUrl = "/Usuarios/ReenviarConfirmacion",
+            urlContactoGralLandingGestion = "/Contactos/ContactoGralLandingGestion",
+            urlContactarForm = "/Contactos/ContactoGeneralFormulario?v2=",
+            LocalidadesConBarrio = [2102];
+
+    </script>
+
+    
+       
+
+
+    <script type="text/javascript">
+    	AP.RunHandlers();
+    	$(document).on("ready",function(){
+    		//seteo los eventos de tracking del header
+    		//footer:Mobile, ayuda, term y cond, etc...
+	        $("body>div.footer a").each(function(){
+	            $(this).on("mousedown",function(event){
+	                $(this).trackAndFollowLink("Footer_Links",$.trim($(this).text()),event);
+	            });
+	        });
+
+            //el click en ver todas las busquedas
+            $("#viewAllSearchs").on("mousedown", function (event) {
+                $(this).trackAndFollowLink("ResBus_BusquedasGuardadas", { action: "verTodas" },event);
+            });
+
+    	});
+    </script>
+
+    
+    <!-- Cxense script bottom begin -->
+    <script>
+        var IdPase = "";
+        if (typeof getIdPase == 'function') {
+            IdPase = getIdPase();
+        }
+
+
+        var cX = cX || {};
+        cX.callQueue = cX.callQueue || [];
+
+        var cXcustomParams = { 'registered': false, 'pw_readable': true, 'userId': "" }
+
+        if (Number(IdPase) > 0) {
+            cX.callQueue.push(["addExternalId", {
+                "id": IdPase,
+                "type": "gca"
+            }]);
+
+            cXcustomParams.registered = true;
+            cXcustomParams.userId = IdPase;
+        }
+
+        cX.callQueue.push(["setSiteId", "9222355469156887877"]);
+        cX.callQueue.push(['setCustomParameters', cXcustomParams]);
+
+        cX.callQueue.push(["sendPageViewEvent"]);
+
+        cX.callQueue.push(['invoke', function () {
+            var segments = cX.getUserSegmentIds({ persistedQueryId: '66cac97a468750b6772b428abacdc324d99833a4' });
+            var smart = ''; // INIT
+            if ((segments == null) || (segments.length == 0)) return;
+
+            for (var i = 0; i < segments.length; i++) {
+                segments[i] = 'cxdmpid=' + segments[i];
+            }
+            smart = segments.join(';');
+            if (smart != '') {
+                cX.setCookie('cxSegmentos', smart, 365);
+            }
+
+        }]);
+
+    </script>
+
+    <script>
+        (function () {
+            try {
+                var scriptEl = document.createElement('script'); scriptEl.type = 'text/javascript'; scriptEl.async = 'async';
+                scriptEl.src = ('https:' == location.protocol) ? 'https://scdn.cxense.com/cx.js' : 'http://cdn.cxense.com/cx.js';
+                var targetEl = document.getElementsByTagName('script')[0]; targetEl.parentNode.insertBefore(scriptEl, targetEl);
+            } catch (e) { };
+        }());
+    </script>
+    <!-- Cxense script bottom end -->   
+</body>
+</html>

@@ -10,7 +10,7 @@ import com.ludtek.immoscraper.model.Publication
 
 class Indexer {
 
-	private static final File INPUT_FILE = new File("/Users/rillgen/immoscrapper", "test.csv")
+	private static final File INPUT_FILE = new File(System.getProperty("user.home")+"/immoscraper", "test.csv")
 
 	public static void main(String[] args) {
 		BufferedReader fileReader = INPUT_FILE.newReader()
@@ -18,8 +18,6 @@ class Indexer {
 		//// Groovy way
 		TransportClient client = TransportClient.builder().build()//.settings(Settings.settingsBuilder().put("node.local", "true").build())
 		
-//		.build()
-
 		// add transport addresses
 		client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300))
 
@@ -38,6 +36,8 @@ class Indexer {
 			
 			fieldmap["timestamp"] = new Date()
 
+			println fieldmap
+			
 			println client.prepareIndex("immoscraper","publication").setSource(fieldmap).get()
 
 		}
