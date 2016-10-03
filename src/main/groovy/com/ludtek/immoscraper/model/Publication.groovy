@@ -5,7 +5,7 @@ import groovy.transform.*
 @ToString
 @Canonical
 class Publication {
-	long id
+	int id
 	String url
 	String title
 	String description

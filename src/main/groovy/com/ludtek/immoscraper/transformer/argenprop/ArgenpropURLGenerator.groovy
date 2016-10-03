@@ -9,6 +9,10 @@ class ArgenpropURLGenerator implements URLGenerator {
 	private final int startId;
 	private final int quantity;
 	private int current;
+	
+	public ArgenpropURLGenerator(int startId) {
+		this(startId, startId);
+	}
 
 	public ArgenpropURLGenerator(int startId, int quantity) {
 		super();

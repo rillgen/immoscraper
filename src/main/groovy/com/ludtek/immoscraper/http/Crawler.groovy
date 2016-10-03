@@ -20,18 +20,21 @@ class Crawler {
 		this.publicationTransformer = publicationTransformer
 	}
 
-	def crawl() {
+	def crawl(int recordNumber=1000, Closure c) {
 
 		def path = urlGenerator.nextPath()
+		
+		int count = 0
 
-		while(path) {
+		while(path&&count<recordNumber) {
 
 			http.request(GET, ContentType.TEXT) { req ->
 				uri.path = path
 
 				response.success = { resp, reader ->
 					def publication = publicationTransformer.parse(reader.text)
-					println publication
+					count++
+					c(publication)
 				}
 
 				response.'404' = { resp -> println "Path ${path} Not found" }

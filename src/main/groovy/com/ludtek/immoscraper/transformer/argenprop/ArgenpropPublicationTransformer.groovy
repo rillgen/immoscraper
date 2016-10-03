@@ -39,22 +39,26 @@ class ArgenpropPublicationTransformer implements PublicationTransformer {
 			operation = meta["cXenseParse:tipooperacion"]
 			propertyType = meta["cXenseParse:tipopropiedad"]
 			
-			partido = meta["cXenseParse:partido"]
-			localidad = meta["cXenseParse:localidad"]
-			provincia = meta["cXenseParse:provincia"]
-			barrio = meta["cXenseParse:barrio"]
+			partido = sanitize(meta["cXenseParse:partido"])
+			localidad = sanitize(meta["cXenseParse:localidad"])
+			provincia = sanitize(meta["cXenseParse:provincia"])
+			barrio = sanitize(meta["cXenseParse:barrio"])
 			
 			url =  BASE_URL + meta["og:url"]
 			
-			title = meta["og:title"].trim()
+			title = sanitize(meta["og:title"].trim())
 			
-			description = additionalInfoNode?.div?.find { it.@class == "fields" }?.text()?.replaceAll("<br>|\n|\t|\r|,|/", "")?.trim()
+			description = sanitize(additionalInfoNode?.div?.find { it.@class == "fields" }?.text()?.trim())
 			
 			id = ID_REGEX.matcher(meta["og:url"])[0][1].toLong()
 			
 		}
 		
 		parsed
+	}
+	
+	public static final String sanitize(String value) {
+		value?value.replaceAll("<br>|\n|\t|\r|,|/", " "):value
 	}
 		
 	@Override
