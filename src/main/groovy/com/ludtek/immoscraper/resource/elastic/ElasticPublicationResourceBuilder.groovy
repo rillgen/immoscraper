@@ -50,7 +50,11 @@ class ElasticPublicationResourceBuilder extends AbstractPublicationResourceBuild
 
 		@Override
 		public void write(Publication publication) {
-			transportClient.prepareIndex(elasticIndex,elasticType).setSource(publication.properties.findAll {key, value -> key != "class"}).get()
+			transportClient.prepareIndex(elasticIndex,elasticType, createElasticId(publication)).setSource(publication.properties.findAll {key, value -> key != "class"}).get()
+		}
+		
+		private static String createElasticId(Publication publication) {
+			publication.with {"${provider}_${id}"}
 		}
 	}
 }
