@@ -11,6 +11,7 @@ import com.ludtek.immoscraper.resource.PublicationWriter
 import com.ludtek.immoscraper.transformer.PublicationTransformer
 import com.ludtek.immoscraper.transformer.argenprop.ArgenpropPublicationTransformer
 import com.ludtek.immoscraper.transformer.argenprop.ArgenpropURLGenerator
+import com.ludtek.immoscraper.util.Direction;
 
 class ArgenpropPublicationResourceBuilder extends AbstractPublicationResourceBuilder {
 
@@ -25,8 +26,8 @@ class ArgenpropPublicationResourceBuilder extends AbstractPublicationResourceBui
 	}
 
 	@Override
-	protected PublicationReader createReader(URI url) {
-		return new ArgenpropPublicationReader()
+	protected PublicationReader createReader(URI uri) {
+		return new ArgenpropPublicationReader(uri)
 	}
 
 	private static class ArgenpropPublicationReader implements PublicationReader {
@@ -35,10 +36,16 @@ class ArgenpropPublicationResourceBuilder extends AbstractPublicationResourceBui
 		final HTTPBuilder http
 		final PublicationTransformer publicationTransformer = new ArgenpropPublicationTransformer()
 		
-		int count = 10
+		int count
 		
-		public ArgenpropPublicationReader() {
-			this.urlGenerator = new ArgenpropURLGenerator(8121158)
+		public ArgenpropPublicationReader(URI uri) {
+			def params = uri.path.split("/").grep()
+			
+			def pivot = params[0]?.toInteger()?:8121158
+			count = params[1]?.toInteger()?:10
+			def direction = Direction.fromDirection(params[2])
+			
+			this.urlGenerator = new ArgenpropURLGenerator(pivot, direction)
 			this.http = new HTTPBuilder(urlGenerator.baseUrl())
 			
 		}
@@ -71,6 +78,16 @@ class ArgenpropPublicationResourceBuilder extends AbstractPublicationResourceBui
 			
 			publication		
 		}
-	}
-	
+		
+		def populateMap(input, separator) {
+			if(input) {
+				input?.inject([:]) { acc, val ->
+					val.split(separator).with {
+						acc[it[0]] = it[1].trim()
+						acc
+					}
+				}
+			}
+		}
+	}	
 }
