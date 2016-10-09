@@ -66,6 +66,7 @@ class ArgenpropPublicationTransformer implements PublicationTransformer {
 			
 			id = ID_REGEX.matcher(meta["og:url"])[0][1].toLong()
 			
+			timestamp = new Date()
 		}
 		
 		parsed

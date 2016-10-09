@@ -4,7 +4,7 @@ import groovy.transform.*
 
 @ToString
 @Canonical
-class Publication {
+class Publication implements Serializable {
 	int id
 	String url
 	String title
@@ -21,6 +21,6 @@ class Publication {
 	String disposition
 	int amount
 	String currency
-	
+	Date timestamp
 	
 }

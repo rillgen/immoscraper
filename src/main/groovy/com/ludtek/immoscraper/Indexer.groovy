@@ -17,7 +17,7 @@ class Indexer {
 
 		//// Groovy way
 		TransportClient client = TransportClient.builder().build()//.settings(Settings.settingsBuilder().put("node.local", "true").build())
-		
+
 		// add transport addresses
 		client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300))
 
@@ -33,11 +33,9 @@ class Indexer {
 				} catch(Exception e) {}
 				[key, value]
 			}
-			
+
 			fieldmap["timestamp"] = new Date()
 
-			println fieldmap
-			
 			println client.prepareIndex("immoscraper","publication").setSource(fieldmap).get()
 
 		}
