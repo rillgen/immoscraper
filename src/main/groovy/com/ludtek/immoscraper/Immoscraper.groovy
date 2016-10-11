@@ -1,6 +1,9 @@
 package com.ludtek.immoscraper
 
-import static java.lang.System.exit
+import static java.lang.System.*
+
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 import com.ludtek.immoscraper.resource.PublicationReader
 import com.ludtek.immoscraper.resource.PublicationResourceBuilder
@@ -11,6 +14,8 @@ import com.ludtek.immoscraper.resource.file.FilePublicationResourceBuilder
 import com.ludtek.immoscraper.resource.provider.ArgenpropPublicationResourceBuilder
 
 class Immoscraper {
+
+	final static Logger LOGGER = LoggerFactory.getLogger(Immoscraper.class)
 
 	final static List<PublicationResourceBuilder> resourcebuilders = [
 		new ConsolePublicationResourceBuilder(),
@@ -27,14 +32,16 @@ class Immoscraper {
 		}
 
 		def opt = cli.parse(args)
-	
+
 		if(!opt||opt.arguments().size()!=2) {
 			cli.usage()
 			exit(0)
 		}
 
 		def verbose = opt.v
-		
+
+		LOGGER.info("Starting Immoscraper with arguments: ${opt.arguments()}")
+
 		def inputUrl = new URI(opt.arguments()[0])
 		def outputUrl = new URI(opt.arguments()[1])
 
@@ -42,28 +49,30 @@ class Immoscraper {
 		PublicationWriter writer = resourcebuilders.find { it.applies(outputUrl) }?.writer(outputUrl)
 
 		if(!reader) {
-			println "No compatible reader found for input url: ${inputUrl}"
+			LOGGER.error("No compatible reader found for input url: ${inputUrl}")
 			exit(0)
 		}
 
 		if(!writer) {
-			println "No compatible writer found for input url: ${outputUrl}"
+			LOGGER.error("No compatible writer found for input url: ${outputUrl}")
 			exit(0)
 		}
 
 		def current
 
-		int count
+		int count = 0
 
 		try {
 			while(current = (reader.next())) {
+				++count
 				if(verbose)
-					println "writing record ${++count}"
+					LOGGER.info("writing record ${count}")
 				writer.write(current)
 			}
 		} catch(Exception e) {
-			e.printStackTrace()
+			LOGGER.error("Processing failed", e)
 		} finally {
+			LOGGER.info("Processed ${count} records")
 			reader.close()
 			writer.close()
 		}

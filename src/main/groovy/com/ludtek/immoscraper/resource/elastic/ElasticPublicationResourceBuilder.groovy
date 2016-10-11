@@ -1,6 +1,7 @@
 package com.ludtek.immoscraper.resource.elastic
 
 import org.elasticsearch.client.transport.TransportClient
+import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress
 
 import com.ludtek.immoscraper.model.Publication
@@ -32,15 +33,14 @@ class ElasticPublicationResourceBuilder extends AbstractPublicationResourceBuild
 		final String elasticType
 
 		private ElasticPublicationWriter(URI uri) {
-			transportClient = TransportClient.builder().build()
+			transportClient = TransportClient.builder().settings(Settings.builder().put("cluster.name", "immoscraper").build()).build()
 			transportClient.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(uri.host), uri.port))
-			
+
 			def path = uri.path.split("/").grep()
-			
+
 			if(path.size()!=2) throw new IllegalArgumentException("Invalid path ${uri.path} must declare index/type")
-			
+
 			(elasticIndex, elasticType) = path
-			
 		}
 
 		@Override
@@ -52,7 +52,7 @@ class ElasticPublicationResourceBuilder extends AbstractPublicationResourceBuild
 		public void write(Publication publication) {
 			transportClient.prepareIndex(elasticIndex,elasticType, createElasticId(publication)).setSource(publication.properties.findAll {key, value -> key != "class"}).get()
 		}
-		
+
 		private static String createElasticId(Publication publication) {
 			publication.with {"${provider}_${id}"}
 		}

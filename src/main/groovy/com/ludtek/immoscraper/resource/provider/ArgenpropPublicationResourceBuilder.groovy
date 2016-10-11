@@ -65,15 +65,21 @@ class ArgenpropPublicationResourceBuilder extends AbstractPublicationResourceBui
 			def path = urlGenerator.nextPath()
 			def publication
 			
-			http.request(GET, ContentType.TEXT) { req ->
-				uri.path = path
-
-				response.success = { resp, reader ->
-					publication = publicationTransformer.parse(reader.text)
-					count--
+			while(!publication&&count) {
+				http.request(GET, ContentType.TEXT) { req ->
+					uri.path = path
+	
+					response.success = { resp, reader ->
+						publication = publicationTransformer.parse(reader.text)
+						count--
+					}
+	
+					response.'404' = { resp -> 
+						println "Path ${path} Not found, skipping..."
+						path = urlGenerator.nextPath()
+						count--
+					}
 				}
-
-				response.'404' = { resp -> println "Path ${path} Not found" }
 			}
 			
 			publication		
