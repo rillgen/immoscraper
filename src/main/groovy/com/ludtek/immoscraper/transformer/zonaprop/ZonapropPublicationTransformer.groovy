@@ -15,6 +15,11 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 		
 		def data = parseDataLayer(rootnode)
 		def meta = parseMeta(rootnode)
+		
+		def keywords = meta['keywords']
+		
+		def superficiematcher = keywords =~ ".+Superficie total ([0-9]+).+"
+		def ambientesmatcher = keywords =~ ".+Ambientes ([0-9]+).+"
 				
 		//TODO: check weird Venta/Alquiler properties
 		def priceText =data.find { k, v ->
@@ -35,6 +40,8 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 			title = meta['og:title']
 			description = sanitize(meta['og:description'])
 			url = meta['og:url']
+			area = superficiematcher.matches()?superficiematcher[0][1] as int:0
+			dormcount = ambientesmatcher.matches()?(ambientesmatcher[0][1] as int) - 1:0
 			
 			def zonaprov = data['provincia'] 
 			

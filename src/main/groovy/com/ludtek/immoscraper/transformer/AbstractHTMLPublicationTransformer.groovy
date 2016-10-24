@@ -30,6 +30,6 @@ abstract class AbstractHTMLPublicationTransformer implements PublicationTransfor
 	}
 	
 	public static final String sanitize(String value) {
-		value?value.replaceAll("<br\\/>|<br>|\n|\t|\r|,|\\/", " "):value
+		value?value.replaceAll("<br.*\\/>|<br.*>|\n|\t|\r|,|\\/", " "):value
 	}
 }
