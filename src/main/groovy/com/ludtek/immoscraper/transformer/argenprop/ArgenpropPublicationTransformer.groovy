@@ -1,15 +1,11 @@
 package com.ludtek.immoscraper.transformer.argenprop
 
-import java.util.regex.Matcher;
-
-import org.ccil.cowan.tagsoup.Parser
-
-import com.ludtek.immoscraper.model.Publication
-import com.ludtek.immoscraper.transformer.PublicationTransformer
-
 import groovy.util.slurpersupport.GPathResult
 
-class ArgenpropPublicationTransformer implements PublicationTransformer {
+import com.ludtek.immoscraper.model.Publication
+import com.ludtek.immoscraper.transformer.AbstractHTMLPublicationTransformer
+
+class ArgenpropPublicationTransformer extends AbstractHTMLPublicationTransformer {
 
 	def BASE_URL = "http://www.argenprop.com"
 	
@@ -27,9 +23,7 @@ class ArgenpropPublicationTransformer implements PublicationTransformer {
 			node.name() == 'div' && node.@class == 'section additionalInfo'
 		}
 		
-		def meta = rootnode.head.meta.collectEntries {
-			[it.@name.text()?:it.@property.text(), it.@content.text()]
-		}
+		def meta = parseMeta(rootnode)
 		
 		parsed.with {
 			
@@ -71,19 +65,5 @@ class ArgenpropPublicationTransformer implements PublicationTransformer {
 		
 		parsed
 	}
-	
-	public static final String sanitize(String value) {
-		value?value.replaceAll("<br\\/>|<br>|\n|\t|\r|,|\\/", " "):value
-	}
 		
-	@Override
-	public Publication parse(String html) {
-		def parser=new XmlSlurper(new Parser())
-		parse(parser.parseText(html.trim()))
-	}
-	
-	def getM() {
-		Matcher.lastMatcher
-	}
-
 }
