@@ -29,6 +29,7 @@ class ArgenpropPublicationTransformerTest extends Specification {
 			output.provider == "argenprop"
 			output.dormcount == 1
 			output.disposition == "Lateral"
+			output.timestamp != null
 			
 			output.description == 'ALQUILER 2 AMB.  EXCELENTE ESTADO. BAÑO Y COCINA REFACCIONADOS A NUEVO. EXCELENTE ZONA  CERCA DE TODO: 3 CUADRAS DEL SUBTE "B" Y UNA CUADRA DE CORRIENTES. APTO PROFESIONAL. EL PRECIO DE LAS EXPENSAS INCLUYE AySA. MAZAL BIENES RAÍCES. 154-400-4744    153-448-3355    4857-0155'
 		
@@ -59,6 +60,7 @@ class ArgenpropPublicationTransformerTest extends Specification {
 			output.provider == "argenprop"
 			output.dormcount == 0
 			output.disposition == null
+			output.timestamp != null
 			
 			output.description == 'EXCELENTE OPORTUNIDAD DE INVERSIÓN.  Monoambiente en venta  con balcón y baño completo.  Cuenta con 26 m2 de superficie cubierta. 27 13 m2 de superficie total. Se ubica en el 3 piso al frente sobre calle Winter al 300.  Se vende con contrato de alquiler vigente hasta Marzo 2017. Renta actual: $5.000.-  El edificio cuenta con 1 ascensor   las cerraduras de las puertas poseen llaves magnéticas.  Valor: U$D 53.500.-  Contacto:  SOLAR URBANO INVERSIONES INMOBILIARIAS  Mail: info@solarurbano.com.ar  -Santa Fe 575. NEUQUÉN CAPITAL.  TE: (0299) 4436-914   4479-683.  -Villegas 555. SAN MARTÍN DE LOS ANDES.  TE: (02972) 425-181   (0294) 154596880.  http:  www.solarurbano.com.ar'
 		
@@ -89,6 +91,7 @@ class ArgenpropPublicationTransformerTest extends Specification {
 			output.provider == "argenprop"
 			output.dormcount == 0
 			output.disposition == "Frente"
+			output.timestamp != null
 			output.description == 'VENTA DEPARTAMENTO 1 AMBIENTE PALERMOUn  hermoso  edificio de 10 pisos en el barrio de Las Cañitas a tan solo una cuadra de Av. Luis M. Campos. Su ubicación es excelente  no solo por su cercanía al centro  sino también por la variedad de líneas de colectivos que te llevan a cualquier parte de la ciuidad. A cuadras de la mítica iglesia de san Benito y al shopping solar de la abadía. Son  2  unidades  por piso  mono ambientes de 44 m2 y 54 m2 (posible división para 2 ambientes). Para más información comunícate al 156926-3344 o scortes@lepore.com.ar Sol CortesLEPORE PROPIEDADES consultas@lepore.com.ar 43313030Medidas: Cocina: integrada'
 		
 	}
@@ -118,6 +121,7 @@ class ArgenpropPublicationTransformerTest extends Specification {
 			output.provider == "argenprop"
 			output.dormcount == 0
 			output.disposition == null
+			output.timestamp != null
 			output.description == 'Zona:Normal - Asfalto -'
 		
 	}

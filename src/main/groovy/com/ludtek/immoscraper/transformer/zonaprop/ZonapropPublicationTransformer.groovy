@@ -69,6 +69,7 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 					barrio = data['barrio']
 			}
 			
+			timestamp = new Date()			
 		}
 
 		return parsed;

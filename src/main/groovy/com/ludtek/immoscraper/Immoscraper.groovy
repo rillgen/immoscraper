@@ -12,6 +12,7 @@ import com.ludtek.immoscraper.resource.console.ConsolePublicationResourceBuilder
 import com.ludtek.immoscraper.resource.elastic.ElasticPublicationResourceBuilder
 import com.ludtek.immoscraper.resource.file.FilePublicationResourceBuilder
 import com.ludtek.immoscraper.resource.provider.ArgenpropPublicationResourceBuilder
+import com.ludtek.immoscraper.resource.provider.ZonapropPublicationResourceBuilder
 
 class Immoscraper {
 
@@ -21,7 +22,8 @@ class Immoscraper {
 		new ConsolePublicationResourceBuilder(),
 		new ElasticPublicationResourceBuilder(),
 		new FilePublicationResourceBuilder(),
-		new ArgenpropPublicationResourceBuilder()
+		new ArgenpropPublicationResourceBuilder(),
+		new ZonapropPublicationResourceBuilder()
 	]
 
 	public static void main(String[] args) {
