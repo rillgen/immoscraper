@@ -120,8 +120,8 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 		
 		switch(dataScript) {
 			case DATA_REGEX:
-				return m[0][1].split(',').collectEntries { pairtxt ->
-					def pair = pairtxt.split(':').collect { (it =~ "\"(.+)\"")[0][1] }
+				return m[0][1].split("\",\"").collectEntries { pairtxt ->
+					def pair = pairtxt.split("\":\"").collect { (it =~ "[\"]{0,1}(.+)[\"]{0,1}")[0][1] }
 					[(pair[0]):pair[1]]										
 				}
 		}

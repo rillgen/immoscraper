@@ -158,5 +158,20 @@ class ZonapropPublicationTransformerTest extends Specification {
 			output.description != null
 		
 	}
+	
+	
+	def testBoveda() {
+		given:
+			def transformer = new ZonapropPublicationTransformer()
+			def html = this.getClass().getResource('/providers/zonaprop/boveda.html').text
+			
+		when:
+			def output = transformer.parse(html)
+			
+		then:
+			output != null
+			output.propertyType == 'Bóveda, nicho o parcela'
+		
+	}
 
 }
