@@ -5,6 +5,7 @@ import static java.lang.System.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
+import com.ludtek.immoscraper.model.Publication
 import com.ludtek.immoscraper.resource.PublicationReader
 import com.ludtek.immoscraper.resource.PublicationResourceBuilder
 import com.ludtek.immoscraper.resource.PublicationWriter
@@ -31,6 +32,7 @@ class Immoscraper {
 
 		cli.with {
 			v(longOpt: 'verbose', "Make the operation more talkative", required:false)
+			f(longOpt: 'force', "Force writing invalid properties", required:false)
 		}
 
 		def opt = cli.parse(args)
@@ -41,6 +43,7 @@ class Immoscraper {
 		}
 
 		def verbose = opt.v
+		def force = opt.f
 
 		LOGGER.info("Starting Immoscraper with arguments: ${opt.arguments()}")
 
@@ -68,8 +71,12 @@ class Immoscraper {
 			while(current = (reader.next())) {
 				++count
 				if(verbose)
-					LOGGER.info("writing record ${count}")
-				writer.write(current)
+					LOGGER.info("Writing record ${count}")
+				if(force||isValid(current)) {
+					writer.write(current)
+				} else {
+					LOGGER.info("Skipping invalid record ${verbose?current:''}")
+				}
 			}
 		} catch(Exception e) {
 			LOGGER.error("Processing failed", e)
@@ -78,5 +85,9 @@ class Immoscraper {
 			reader.close()
 			writer.close()
 		}
+	}
+	
+	private static void isValid(Publication publication) {
+		publication.amount > 100 && publication.description && publication.title
 	}
 }
