@@ -44,8 +44,16 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 			description = sanitize(meta['og:description'])
 			url = meta['og:url']
 			area = superficiematcher.matches()?superficiematcher[0][1] as int:0
-			def dormtxt = caracteristicas['Cantidad dormitorios'] 
-			dormcount = dormtxt?dormtxt as int:ambientesmatcher.matches()?(ambientesmatcher[0][1] as int) - 1:0
+			def dormtxt = caracteristicas['Cantidad dormitorios']
+
+			switch(dormtxt?:"") {
+				case ~/.*([0-9]+).*/:
+					dormcount = m[0][1] as int
+					break;
+				default:
+					dormcount = ambientesmatcher.matches()?(ambientesmatcher[0][1] as int) - 1:0
+			}
+			
 			disposition = caracteristicas['Disposición']?.capitalize()
 			
 			def zonaprov = data['provincia'] 
