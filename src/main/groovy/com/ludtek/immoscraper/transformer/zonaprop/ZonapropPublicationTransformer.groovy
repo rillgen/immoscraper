@@ -89,8 +89,6 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 			node.name() == 'div' && node.@class == 'card aviso-caracteristicas' && node?.div?.h3?.text() == 'Generales'
 		}
 		
-		def textos = cargeneral?.div?.div?.ul?.li.collect { it.text() }
-		
 		cargeneral?.div?.div?.ul?.li?.collectEntries { item ->
 			def text = item?.text()
 			switch(text) {
@@ -98,7 +96,7 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 					return [(m[0][1]):m[0][2]]
 			}
 			return [:]
-		}
+		}?:[:]
 		
 	}
 	
