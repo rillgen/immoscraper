@@ -74,8 +74,8 @@ class ZonapropPublicationResourceBuilder extends AbstractPublicationResourceBuil
 						count--
 					}
 	
-					response.'404' = { resp ->
-						println "Path ${path} Not found, skipping..."
+					response.failure = { resp ->
+						println "Path ${path} failed with status ${resp.status}, skipping..."
 						path = urlGenerator.nextPath()
 						count--
 					}
