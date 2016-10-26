@@ -87,7 +87,7 @@ class Immoscraper {
 		}
 	}
 	
-	private static void isValid(Publication publication) {
+	private static boolean isValid(Publication publication) {
 		publication.amount > 100 && publication.description && publication.title
 	}
 }
