@@ -173,5 +173,20 @@ class ZonapropPublicationTransformerTest extends Specification {
 			output.propertyType == 'Bóveda, nicho o parcela'
 		
 	}
-
+	
+	def testUruguay() {
+		given:
+		def transformer = new ZonapropPublicationTransformer()
+		def html = this.getClass().getResource('/providers/zonaprop/deptouru.html').text
+		
+	when:
+		def output = transformer.parse(html)
+		
+	then:
+		output != null
+		output.propertyType == 'Departamento'
+		output.localidad == 'Montevideo'
+		
+	}
+	
 }
