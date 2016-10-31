@@ -50,7 +50,11 @@ class ElasticPublicationResourceBuilder extends AbstractPublicationResourceBuild
 
 		@Override
 		public void write(Publication publication) {
-			transportClient.prepareIndex(elasticIndex,elasticType, createElasticId(publication)).setSource(publication.properties.findAll {key, value -> key != "class"}).get()
+			def basemap = publication.properties.findAll {key, value -> key != "class"}
+			if(publication.location) {
+				basemap['location'] = [ publication.location.lat , publication.location.lon ]
+			}
+			transportClient.prepareIndex(elasticIndex,elasticType, createElasticId(publication)).setSource(basemap).get()
 		}
 
 		private static String createElasticId(Publication publication) {

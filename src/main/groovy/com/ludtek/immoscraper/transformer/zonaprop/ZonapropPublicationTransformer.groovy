@@ -98,7 +98,7 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 			node.name() == 'div' && node.@id == 'map'
 		}
 		
-		geodata?.input.collectEntries { input ->
+		geodata?.input?.collectEntries { input ->
 			[(input.@id.text()):input.@value.text()]
 		}?:[:]
 	}
