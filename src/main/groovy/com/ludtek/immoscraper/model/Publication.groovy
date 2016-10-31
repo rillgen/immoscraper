@@ -22,5 +22,6 @@ class Publication implements Serializable {
 	int amount
 	String currency
 	Date timestamp
+	GeoLocation location
 	
 }

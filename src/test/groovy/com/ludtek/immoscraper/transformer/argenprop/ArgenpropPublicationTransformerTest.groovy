@@ -30,6 +30,8 @@ class ArgenpropPublicationTransformerTest extends Specification {
 			output.dormcount == 1
 			output.disposition == "Lateral"
 			output.timestamp != null
+			output.location.lat == -34.600442
+			output.location.lon == -58.435764
 			
 			output.description == 'ALQUILER 2 AMB.  EXCELENTE ESTADO. BAÑO Y COCINA REFACCIONADOS A NUEVO. EXCELENTE ZONA  CERCA DE TODO: 3 CUADRAS DEL SUBTE "B" Y UNA CUADRA DE CORRIENTES. APTO PROFESIONAL. EL PRECIO DE LAS EXPENSAS INCLUYE AySA. MAZAL BIENES RAÍCES. 154-400-4744    153-448-3355    4857-0155'
 		

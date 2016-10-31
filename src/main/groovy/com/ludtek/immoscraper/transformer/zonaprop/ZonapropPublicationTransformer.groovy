@@ -2,6 +2,7 @@ package com.ludtek.immoscraper.transformer.zonaprop
 
 import groovy.util.slurpersupport.GPathResult
 
+import com.ludtek.immoscraper.model.GeoLocation
 import com.ludtek.immoscraper.model.Publication
 import com.ludtek.immoscraper.transformer.AbstractHTMLPublicationTransformer
 
@@ -16,6 +17,7 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 		def data = parseDataLayer(rootnode)
 		def meta = parseMeta(rootnode)
 		def caracteristicas = parseCaracteristicas(rootnode)
+		def geo = parseGeodata(rootnode)
 
 		def keywords = meta['keywords']
 		
@@ -71,14 +73,18 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 					partido = data['ciudad']
 					barrio = data['barrio']
 					break;
-				case "Otros Paises":
-					localidad =  data['barrio']
-					barrio = data['barrio']
-					break;
 				default:
 					provincia = zonaprov
 					localidad =  data['ciudad']
 					barrio = data['barrio']
+			}
+			
+			//Geodata
+			def lat = geo['lat']?.toDouble()
+			def lon = geo['lng']?.toDouble()
+			
+			if(lat&&lon) {
+				location = new GeoLocation(lat, lon)
 			}
 			
 			timestamp = new Date()			
@@ -87,6 +93,16 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 		return parsed;
 	}
 
+	def parseGeodata(GPathResult rootnode) {
+		def geodata = rootnode.body.'**'.find { node ->
+			node.name() == 'div' && node.@id == 'map'
+		}
+		
+		geodata?.input.collectEntries { input ->
+			[(input.@id.text()):input.@value.text()]
+		}?:[:]
+	}
+	
 	def CARACTERISTICAS_REGEX = ~/(.+) \((.+)\)/
 	def parseCaracteristicas(GPathResult rootnode) {
 	//		<div class="list list-checkmark no-margin">

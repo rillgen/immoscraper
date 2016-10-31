@@ -30,6 +30,8 @@ class ZonapropPublicationTransformerTest extends Specification {
 			output.dormcount == 1
 			output.disposition == "Contrafrente"
 			output.timestamp != null
+			output.location.lat == -34.623134000000000
+			output.location.lon == -58.398260699999980
 			
 			output.description == 'XINTEL(LEP-LEP-9034)  Unidad al contrafrente a reciclar  ubicada sobre Av. San Juan a dos cuadras Av. Jujuy. Con accesibilidad a numerosas líneas de colectivo  subte "E" y "H". Consta de living-comedor  dormitorio con placard  cocina independiente equipada  lavadero y baño completo. Los ambientes son muy luminosos y poseen piso de parquet. Oportunidad.   LEPORE PROPIEDADES consultas@lepore.com.ar 49055500  LEPORE Propiedades S.A.    CUIT : 33-60234274-9        C.U.C.I.C.B.A. Matrícula Nº 931 (Sucursales Caballito - Palermo - Centro)        AVISO LEGAL: Las descripciones arquitectónicas y funcionales  valores de expensas  impuestos y servicios  fotos y medidas de este inmueble son aproximados. Los datos fueron proporcionados por el propietario y pueden no estar actualizados a la hora de la visualización de este aviso por lo cual pueden arrojar inexactitudes y discordancias con las que surgen de los las facturas  títulos y planos legales del inmueble. El interesado deberá realizar las verificaciones respectivas previamente a la realización de cualquier operación  requiriendo por sí o sus profesionales las copias necesarias de la documentación que corresponda.        Venta supeditada al cumplimiento por parte del propietario de los requisitos de la resolución general Nº 2371 de la AFIP (pedido de COTI)'
 		
@@ -173,20 +175,5 @@ class ZonapropPublicationTransformerTest extends Specification {
 			output.propertyType == 'Bóveda, nicho o parcela'
 		
 	}
-	
-	def testUruguay() {
-		given:
-		def transformer = new ZonapropPublicationTransformer()
-		def html = this.getClass().getResource('/providers/zonaprop/deptouru.html').text
-		
-	when:
-		def output = transformer.parse(html)
-		
-	then:
-		output != null
-		output.propertyType == 'Departamento'
-		output.localidad == 'Montevideo'
-		
-	}
-	
+
 }
