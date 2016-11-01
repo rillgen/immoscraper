@@ -34,7 +34,7 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 			switch(priceText) {
 				case PRICE_REGEX:
 					currency = m[0][1] == '$'?"ARS":"USD"
-					amount = m[0][2].replaceAll("\\.","") as int
+					amount = m[0][2].replaceAll("\\.","") as long
 			}
 			
 			id = rootnode.body.input.find { it.@id.text() == 'sugerencia-idaviso' }.@value.text() as int

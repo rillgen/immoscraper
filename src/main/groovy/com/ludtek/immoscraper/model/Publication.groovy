@@ -19,7 +19,7 @@ class Publication implements Serializable {
 	int area
 	int dormcount
 	String disposition
-	int amount
+	long amount
 	String currency
 	Date timestamp
 	GeoLocation location

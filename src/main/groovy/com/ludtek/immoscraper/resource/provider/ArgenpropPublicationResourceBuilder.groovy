@@ -4,6 +4,8 @@ import static groovyx.net.http.Method.GET
 import groovyx.net.http.ContentType
 import groovyx.net.http.HTTPBuilder
 
+import org.slf4j.LoggerFactory
+
 import com.ludtek.immoscraper.model.Publication
 import com.ludtek.immoscraper.resource.AbstractPublicationResourceBuilder
 import com.ludtek.immoscraper.resource.PublicationReader
@@ -11,9 +13,11 @@ import com.ludtek.immoscraper.resource.PublicationWriter
 import com.ludtek.immoscraper.transformer.PublicationTransformer
 import com.ludtek.immoscraper.transformer.argenprop.ArgenpropPublicationTransformer
 import com.ludtek.immoscraper.transformer.argenprop.ArgenpropURLGenerator
-import com.ludtek.immoscraper.util.Direction;
+import com.ludtek.immoscraper.util.Direction
 
 class ArgenpropPublicationResourceBuilder extends AbstractPublicationResourceBuilder {
+	
+	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ArgenpropPublicationResourceBuilder.class)
 
 	@Override
 	public boolean applies(URI url) {
@@ -75,7 +79,7 @@ class ArgenpropPublicationResourceBuilder extends AbstractPublicationResourceBui
 					}
 	
 					response.'404' = { resp -> 
-						println "Path ${path} Not found, skipping..."
+						LOGGER.info("Path ${path} Not found, skipping...")
 						path = urlGenerator.nextPath()
 						count--
 					}
@@ -84,16 +88,6 @@ class ArgenpropPublicationResourceBuilder extends AbstractPublicationResourceBui
 			
 			publication		
 		}
-		
-		def populateMap(input, separator) {
-			if(input) {
-				input?.inject([:]) { acc, val ->
-					val.split(separator).with {
-						acc[it[0]] = it[1].trim()
-						acc
-					}
-				}
-			}
-		}
+
 	}	
 }

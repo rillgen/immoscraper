@@ -33,7 +33,7 @@ class ArgenpropPublicationTransformer extends AbstractHTMLPublicationTransformer
 			switch(meta["cXenseParse:precio"]) {
 				case PRICE_REGEX:
 					currency = m[0][1] == '$'?"ARS":"USD"
-					amount = m[0][2].replaceAll("\\.","") as int
+					amount = m[0][2].replaceAll("\\.","") as long
 			}
 			
 			operation = meta["cXenseParse:tipooperacion"]

@@ -11,9 +11,13 @@ import com.ludtek.immoscraper.transformer.PublicationTransformer
 import com.ludtek.immoscraper.transformer.zonaprop.ZonapropPublicationTransformer
 import com.ludtek.immoscraper.transformer.zonaprop.ZonapropURLGenerator
 import com.ludtek.immoscraper.util.Direction
+import org.slf4j.LoggerFactory
+
 import static groovyx.net.http.Method.GET
 
 class ZonapropPublicationResourceBuilder extends AbstractPublicationResourceBuilder {
+	
+	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ZonapropPublicationResourceBuilder.class)
 
 	@Override
 	public boolean applies(URI uri) {
@@ -71,11 +75,16 @@ class ZonapropPublicationResourceBuilder extends AbstractPublicationResourceBuil
 	
 					response.success = { resp, reader ->
 						publication = publicationTransformer.parse(reader.text)
+						if(!validate(publication)) {
+							LOGGER.info("Invalid Zonaprop publication with id {publication?.id}, skipping...")
+							publication = null
+							path = urlGenerator.nextPath()
+						}
 						count--
 					}
 	
 					response.failure = { resp ->
-						println "Path ${path} failed with status ${resp.status}, skipping..."
+						LOGGER.info("Path ${path} failed with status ${resp.status}, skipping...")
 						path = urlGenerator.nextPath()
 						count--
 					}
@@ -85,16 +94,9 @@ class ZonapropPublicationResourceBuilder extends AbstractPublicationResourceBuil
 			publication
 		}
 		
-		def populateMap(input, separator) {
-			if(input) {
-				input?.inject([:]) { acc, val ->
-					val.split(separator).with {
-						acc[it[0]] = it[1].trim()
-						acc
-					}
-				}
-			}
+		def validate(Publication publication) {
+			//Filter Columbian listings
+			publication&&!publication.url.startsWith("http://www.inmuebles24.co")
 		}
 	}
-
 }
