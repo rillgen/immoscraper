@@ -52,7 +52,7 @@ class ElasticPublicationResourceBuilder extends AbstractPublicationResourceBuild
 		public void write(Publication publication) {
 			def basemap = publication.properties.findAll {key, value -> key != "class"}
 			if(publication.location) {
-				basemap['location'] = [ publication.location.lat , publication.location.lon ]
+				basemap['location'] = [ publication.location.lon , publication.location.lat ]
 			}
 			transportClient.prepareIndex(elasticIndex,elasticType, createElasticId(publication)).setSource(basemap).get()
 		}

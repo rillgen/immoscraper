@@ -86,7 +86,7 @@ class ArgenpropPublicationTransformer extends AbstractHTMLPublicationTransformer
 				default:
 					return null	
 			}			
-		}?:[:]
+		}
 		
 	}
 		
