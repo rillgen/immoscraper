@@ -73,6 +73,10 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 					partido = data['ciudad']
 					barrio = data['barrio']
 					break;
+				case "Otros Paises":
+					localidad =  data['barrio']
+					barrio = data['barrio']
+					break;
 				default:
 					provincia = zonaprov
 					localidad =  data['ciudad']
