@@ -6,6 +6,8 @@ import com.ludtek.immoscraper.model.GeoLocation
 import com.ludtek.immoscraper.model.Publication
 import com.ludtek.immoscraper.transformer.AbstractHTMLPublicationTransformer
 
+import static com.ludtek.immoscraper.util.GeoHelper.*
+
 class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer {
 
 	def PRICE_REGEX = ~/(.+) ([0-9\\.]+)/
@@ -87,7 +89,7 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 			def lat = geo['lat']?.toDouble()
 			def lon = geo['lng']?.toDouble()
 			
-			if(lat&&lon) {
+			if(validGeopoints(lat,lon)) {
 				location = new GeoLocation(lat, lon)
 			}
 			

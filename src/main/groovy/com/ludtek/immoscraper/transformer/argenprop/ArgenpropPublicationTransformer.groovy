@@ -6,6 +6,8 @@ import com.ludtek.immoscraper.model.GeoLocation
 import com.ludtek.immoscraper.model.Publication
 import com.ludtek.immoscraper.transformer.AbstractHTMLPublicationTransformer
 
+import static com.ludtek.immoscraper.util.GeoHelper.*
+
 class ArgenpropPublicationTransformer extends AbstractHTMLPublicationTransformer {
 
 	def BASE_URL = "http://www.argenprop.com"
@@ -80,7 +82,7 @@ class ArgenpropPublicationTransformer extends AbstractHTMLPublicationTransformer
 				case GEO_REGEX:
 					def lat = m[0][1]?.toDouble()
 					def lon = m[0][2]?.toDouble()
-					if(lat&&lon) {
+					if(validGeopoints(lat,lon)) {
 						return new GeoLocation(lat, lon)
 					}
 				default:
