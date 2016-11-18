@@ -76,7 +76,7 @@ class ZonapropPublicationResourceBuilder extends AbstractPublicationResourceBuil
 					response.success = { resp, reader ->
 						publication = publicationTransformer.parse(reader.text)
 						if(!validate(publication)) {
-							LOGGER.info("Invalid Zonaprop publication with id {publication?.id}, skipping...")
+							LOGGER.info("Invalid Zonaprop publication with id ${publication?.id}, skipping...")
 							publication = null
 							path = urlGenerator.nextPath()
 						}
