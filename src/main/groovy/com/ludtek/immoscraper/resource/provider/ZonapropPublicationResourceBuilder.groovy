@@ -96,7 +96,7 @@ class ZonapropPublicationResourceBuilder extends AbstractPublicationResourceBuil
 		
 		def validate(Publication publication) {
 			//Filter Columbian listings
-			publication&&!publication.url.startsWith("http://www.inmuebles24.co")
+			publication?.url&&!publication.url.startsWith("http://www.inmuebles24.co")
 		}
 	}
 }
