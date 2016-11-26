@@ -86,7 +86,7 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 			}
 			
 			//Geodata
-			if(geo['lat']&&geo['long']) {
+			if(geo['lat']&&geo['lng']) {
 				def lat = geo['lat'].toDouble()
 				def lon = geo['lng'].toDouble()
 
