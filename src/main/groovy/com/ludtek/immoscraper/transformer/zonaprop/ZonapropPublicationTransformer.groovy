@@ -86,11 +86,13 @@ class ZonapropPublicationTransformer extends AbstractHTMLPublicationTransformer 
 			}
 			
 			//Geodata
-			def lat = geo['lat']?.toDouble()
-			def lon = geo['lng']?.toDouble()
-			
-			if(validGeopoints(lat,lon)) {
-				location = new GeoLocation(lat, lon)
+			if(geo['lat']&&geo['long']) {
+				def lat = geo['lat'].toDouble()
+				def lon = geo['lng'].toDouble()
+
+				if(validGeopoints(lat,lon)) {
+					location = new GeoLocation(lat, lon)
+				}
 			}
 			
 			timestamp = new Date()			

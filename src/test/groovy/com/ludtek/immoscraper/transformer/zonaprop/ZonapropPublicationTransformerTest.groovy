@@ -99,6 +99,30 @@ class ZonapropPublicationTransformerTest extends Specification {
 		
 	}
 	
+	def testDeptoInvLongitude() {
+		given:
+			def transformer = new ZonapropPublicationTransformer()
+			def html = this.getClass().getResource('/providers/zonaprop/deptoinvlong.html').text
+
+		when:
+			def output = transformer.parse(html)
+
+		then:
+			output.location == null
+	}
+	
+	def testDeptoInvLocation2() {
+		given:
+			def transformer = new ZonapropPublicationTransformer()
+			def html = this.getClass().getResource('/providers/zonaprop/deptoinvdec.html').text
+
+		when:
+			def output = transformer.parse(html)
+
+		then:
+			output.location == null
+	}
+	
 	def testDeptoAlqVen() {
 		given:
 			def transformer = new ZonapropPublicationTransformer()
