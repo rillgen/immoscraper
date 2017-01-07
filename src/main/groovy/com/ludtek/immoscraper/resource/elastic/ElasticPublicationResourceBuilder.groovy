@@ -1,8 +1,10 @@
 package com.ludtek.immoscraper.resource.elastic
 
 import org.elasticsearch.client.transport.TransportClient
-import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.geo.GeoPoint;
+import org.elasticsearch.common.settings.Settings
 import org.elasticsearch.common.transport.InetSocketTransportAddress
+import org.elasticsearch.transport.client.PreBuiltTransportClient
 
 import com.ludtek.immoscraper.model.Publication
 import com.ludtek.immoscraper.resource.AbstractPublicationResourceBuilder
@@ -33,8 +35,7 @@ class ElasticPublicationResourceBuilder extends AbstractPublicationResourceBuild
 		final String elasticType
 
 		private ElasticPublicationWriter(URI uri) {
-			transportClient = TransportClient.builder().settings(Settings.builder().put("cluster.name", "immoscraper").build()).build()
-			transportClient.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(uri.host), uri.port))
+			transportClient = new PreBuiltTransportClient(Settings.builder().put("cluster.name", "immoscraper").build()).addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(uri.host), uri.port))
 
 			def path = uri.path.split("/").grep()
 
@@ -52,7 +53,7 @@ class ElasticPublicationResourceBuilder extends AbstractPublicationResourceBuild
 		public void write(Publication publication) {
 			def basemap = publication.properties.findAll {key, value -> key != "class"}
 			if(publication.location) {
-				basemap['location'] = [ publication.location.lon , publication.location.lat ]
+				basemap['location'] = new GeoPoint(publication.location.lat, publication.location.lon)
 			}
 			transportClient.prepareIndex(elasticIndex,elasticType, createElasticId(publication)).setSource(basemap).get()
 		}

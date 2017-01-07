@@ -1,7 +1,7 @@
 #!/bin/bash
 curl -XPUT "http://localhost:9200/$1" -d '{
   "mappings": {
-    "publication": {
+    "publications": {
       "properties": {
         "location": {
           "type": "geo_point"
