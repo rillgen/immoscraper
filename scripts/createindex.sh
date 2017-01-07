@@ -1,5 +1,8 @@
 #!/bin/bash
-curl -XPUT "http://localhost:9200/$1" -d '{
+curl -XPUT "http://localhost:9200/$1-000001" -d '{
+  "aliases": {
+    "$1": {}
+  },
   "mappings": {
     "publications": {
       "properties": {
