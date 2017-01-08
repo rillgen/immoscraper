@@ -1,10 +1,10 @@
 #!/bin/bash
-curl -XPUT "http://localhost:9200/$1-000001" -d '{
+curl -XPUT "http://localhost:9200/immoscraper-000001" -d '{
   "aliases": {
-    "$1": {}
+    "immoscraper": {}
   },
   "mappings": {
-    "publications": {
+    "publication": {
       "properties": {
         "location": {
           "type": "geo_point"
