@@ -24,4 +24,15 @@ class Publication implements Serializable {
 	Date timestamp
 	GeoLocation location
 	
+	//Deutschland
+	int etage
+	int plz
+	String adresse
+	boolean balkon
+	boolean keller
+	boolean aufzug
+	boolean ebk
+	boolean garten
+	boolean gaestewc
+	
 }
