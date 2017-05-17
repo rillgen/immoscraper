@@ -33,6 +33,5 @@ class Publication implements Serializable {
 	boolean aufzug
 	boolean ebk
 	boolean garten
-	boolean gaestewc
 	
 }
