@@ -19,12 +19,12 @@ class ZonapropURLGenerator implements URLGenerator {
 	
 	@Override
 	public String nextPath() {
-		current>0?"/propiedades/Departamento-en-Alquiler-en-Capital-Federal-${direction==DESCENDING?current--:current++}.html":null;
+		current>0?"/propiedades/Departamento-en-Alquiler-en-Capital-Federal-${direction==DESCENDING?current--:current++}.html":null
 	}
 
 	@Override
 	public String baseUrl() {
-		return "http://www.zonaprop.com.ar";
+		"http://www.zonaprop.com.ar"
 	}
 
 }

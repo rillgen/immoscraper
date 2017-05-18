@@ -13,6 +13,7 @@ import com.ludtek.immoscraper.resource.console.ConsolePublicationResourceBuilder
 import com.ludtek.immoscraper.resource.elastic.ElasticPublicationResourceBuilder
 import com.ludtek.immoscraper.resource.file.FilePublicationResourceBuilder
 import com.ludtek.immoscraper.resource.provider.ArgenpropPublicationResourceBuilder
+import com.ludtek.immoscraper.resource.provider.ImmobilienscoutPublicationResourceBuilder
 import com.ludtek.immoscraper.resource.provider.ZonapropPublicationResourceBuilder
 
 class Immoscraper {
@@ -24,7 +25,8 @@ class Immoscraper {
 		new ElasticPublicationResourceBuilder(),
 		new FilePublicationResourceBuilder(),
 		new ArgenpropPublicationResourceBuilder(),
-		new ZonapropPublicationResourceBuilder()
+		new ZonapropPublicationResourceBuilder(),
+		new ImmobilienscoutPublicationResourceBuilder()
 	]
 
 	public static void main(String[] args) {
@@ -88,6 +90,6 @@ class Immoscraper {
 	}
 	
 	private static boolean isValid(Publication publication) {
-		publication.amount > 100 && publication.description && publication.title
+		publication.amount > 100 && publication.description && publication.title && publication.operation && publication.propertyType
 	}
 }

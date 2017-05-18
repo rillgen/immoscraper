@@ -20,12 +20,12 @@ class ArgenpropURLGenerator implements URLGenerator {
 	
 	@Override
 	public String nextPath() {
-		current>0?"/Propiedades/Detalles/${direction==DESCENDING?current--:current++}--Departamento-en-Alquiler-en-Capital-Federal":null;
+		current>0?"/Propiedades/Detalles/${direction==DESCENDING?current--:current++}--Departamento-en-Alquiler-en-Capital-Federal":null
 	}
 
 	@Override
 	public String baseUrl() {
-		return "http://www.argenprop.com";
+		"http://www.argenprop.com"
 	}
 
 }

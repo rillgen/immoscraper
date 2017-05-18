@@ -26,7 +26,7 @@ class ZonapropPublicationResourceBuilder extends AbstractPublicationResourceBuil
 
 	@Override
 	protected PublicationWriter createWriter(URI uri) {
-		return new UnsupportedOperationException()
+		throw new UnsupportedOperationException()
 	}
 
 	@Override

@@ -26,7 +26,8 @@ class Publication implements Serializable {
 	
 	//Deutschland
 	int etage
-	int plz
+	String category
+	String plz
 	String adresse
 	boolean balkon
 	boolean keller
