@@ -1,8 +1,4 @@
-package com.ludtek.immoscraper.resource.provider;
-
-import static groovyx.net.http.Method.GET
-import groovyx.net.http.ContentType
-import groovyx.net.http.HTTPBuilder
+package com.ludtek.immoscraper.resource.provider
 
 import org.slf4j.LoggerFactory
 
@@ -11,53 +7,57 @@ import com.ludtek.immoscraper.resource.AbstractPublicationResourceBuilder
 import com.ludtek.immoscraper.resource.PublicationReader
 import com.ludtek.immoscraper.resource.PublicationWriter
 import com.ludtek.immoscraper.transformer.PublicationTransformer
-import com.ludtek.immoscraper.transformer.argenprop.ArgenpropPublicationTransformer
-import com.ludtek.immoscraper.transformer.argenprop.ArgenpropURLGenerator
+import com.ludtek.immoscraper.transformer.immobilienscout.ImmobilienscoutPublicationTransformer
+import com.ludtek.immoscraper.transformer.immobilienscout.ImmobilienscoutURLGenerator
 import com.ludtek.immoscraper.util.Direction
 
-class ArgenpropPublicationResourceBuilder extends AbstractPublicationResourceBuilder {
+import static groovyx.net.http.Method.GET
+
+import groovyx.net.http.ContentType
+import groovyx.net.http.HTTPBuilder
+
+class ImmobilienscoutPublicationResourceBuilder extends AbstractPublicationResourceBuilder {
 	
-	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ArgenpropPublicationResourceBuilder.class)
+	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ImmobilienscoutPublicationResourceBuilder.class)
 
 	@Override
-	public boolean applies(URI url) {
-		url.scheme == 'provider' && url.host == 'argenprop'
+	public boolean applies(URI uri) {
+		uri.scheme == 'provider' && uri.host == 'immobilienscout'
 	}
 
 	@Override
-	protected PublicationWriter createWriter(URI url) {
+	protected PublicationWriter createWriter(URI uri) {
 		throw new UnsupportedOperationException()
 	}
 
 	@Override
 	protected PublicationReader createReader(URI uri) {
-		return new ArgenpropPublicationReader(uri)
+		return new ImmobilienscoutPublicationReader(uri)
 	}
-
-	private static class ArgenpropPublicationReader implements PublicationReader {
+	
+	private static class ImmobilienscoutPublicationReader implements PublicationReader {
 		
-		final ArgenpropURLGenerator urlGenerator;
+		final ImmobilienscoutURLGenerator urlGenerator;
 		final HTTPBuilder http
-		final PublicationTransformer publicationTransformer = new ArgenpropPublicationTransformer()
+		final PublicationTransformer publicationTransformer = new ImmobilienscoutPublicationTransformer()
 		
 		int count
 		
-		public ArgenpropPublicationReader(URI uri) {
+		public ImmobilienscoutPublicationReader(URI uri) {
 			def params = uri.path.split("/").grep()
 			
-			def pivot = params[0]?.toInteger()?:8121158
+			def pivot = params[0]?.toInteger()?:93342774
 			count = params[1]?.toInteger()?:10
 			def direction = Direction.fromDirection(params[2])
 			
-			this.urlGenerator = new ArgenpropURLGenerator(pivot, direction)
+			this.urlGenerator = new ImmobilienscoutURLGenerator(pivot, direction)
 			this.http = new HTTPBuilder(urlGenerator.baseUrl())
 			
 		}
 
 		@Override
 		public void close() throws IOException {
-			// Nothing to do
-			
+			// nothing to do
 		}
 
 		@Override
@@ -84,10 +84,8 @@ class ArgenpropPublicationResourceBuilder extends AbstractPublicationResourceBui
 						count--
 					}
 				}
-			}
-			
-			publication		
-		}
-
-	}	
+			}			
+			publication	
+		}		
+	}
 }
