@@ -1,5 +1,6 @@
 #!/bin/bash
-curl -XPUT "http://localhost:9200/immoscraper-000001" -d '{
+BASE_URL=$1
+curl -XPUT -H "Content-Type: application/json" $BASE_URL/immoscraper-000001 -d '{
   "aliases": {
     "immoscraper": {}
   },

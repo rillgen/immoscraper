@@ -1,2 +1,3 @@
 #!/bin/bash
-curl -XDELETE "http://localhost:9200/$1"
+BASE_URL=$1
+curl -XDELETE $BASE_URL/$1

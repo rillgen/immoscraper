@@ -9,143 +9,152 @@ import com.ludtek.immoscraper.model.GeoLocation;
 import com.ludtek.immoscraper.model.Publication;
 import com.ludtek.immoscraper.transformer.AbstractHTMLPublicationTransformer
 
-import groovy.util.slurpersupport.GPathResult;;
+import groovy.util.slurpersupport.GPathResult;
+
+;
 
 class ImmobilienscoutPublicationTransformer extends AbstractHTMLPublicationTransformer {
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ImmobilienscoutPublicationTransformer.class)
 
-	@Override
-	public Publication parse(GPathResult rootNode) {
-		Publication parsed = new Publication()
+    private static final Logger LOGGER = LoggerFactory.getLogger(ImmobilienscoutPublicationTransformer.class)
 
-		def values = readKeyValues(rootNode)
+    @Override
+    public Publication parse(GPathResult rootNode) {
+        Publication parsed = new Publication()
 
-		parsed.amount = (values['obj_totalRent']?:values['obj_baseRent']?:values['obj_purchasePrice']?:0) as Float
-		parsed.area = (values['obj_livingSpace']?:0) as Float
-		parsed.barrio = values['obj_regio3']
-		parsed.localidad = values['obj_regio2']
-		parsed.provincia = values['obj_regio1']
-		parsed.currency = 'EUR'
-		parsed.dormcount = (values['obj_noRoomsRange']?:-1) as Integer
-		parsed.id = values['obj_scoutId'] as Integer
+        if (rootNode.head.title.text().contains('deaktiviert')) {
+            println 'offer deactivated... skipping...'
+            return parsed
+        }
 
-		parsed.propertyType = values['type']
-		parsed.operation = values['operation']
-		parsed.category = values['category']
 
-		parsed.provider = 'immobilienscout'
+        def values = readKeyValues(rootNode)
 
-		def meta = parseMeta(rootNode)
-		parsed.title = meta['og:title']
-		parsed.url = "https://www.immobilienscout24.de/expose/${parsed.id}"
+        parsed.amount = (values['obj_totalRent'] ?: values['obj_baseRent'] ?: values['obj_purchasePrice'] ?: 0) as Float
+        parsed.area = (values['obj_livingSpace'] ?: 0) as Float
+        parsed.barrio = values['obj_regio3']
+        parsed.localidad = values['obj_regio2']
+        parsed.provincia = values['obj_regio1']
+        parsed.currency = 'EUR'
+        parsed.dormcount = (values['obj_noRooms'] ?: values['obj_noRoomsRange'] ?: -1) as Integer
+        parsed.id = values['obj_scoutId'] as Integer
 
-		parsed.location = parseGeodata(rootNode)
+        parsed.propertyType = values['type']
+        parsed.operation = values['operation']
+        parsed.category = values['category']
 
-		def etagestr = values['obj_floor']
-		try {
-			parsed.etage = (etagestr?:0) as Integer
-		} catch(NumberFormatException nfe) {
-			LOGGER.warn("Could not format etage value ${etagestr}")
-		}
-		parsed.plz = values['geo_plz']
+        parsed.provider = 'immobilienscout'
 
-		def street = values['obj_streetPlain']
-		def houseNumber = values['obj_houseNumber']
-		parsed.adresse = street == 'no_information'?null:street?.replaceAll('_',' ')+ ' ' +houseNumber
+        def meta = parseMeta(rootNode)
+        parsed.title = meta['og:title']
+        parsed.url = "https://www.immobilienscout24.de/expose/${parsed.id}"
 
-		parsed.balkon = toBool(values['obj_balcony'])
-		parsed.keller = toBool(values['obj_cellar'])
-		parsed.ebk = toBool(values['obj_hasKitchen'])
-		parsed.aufzug = toBool(values['obj_lift'])
-		parsed.garten = toBool(values['obj_garden'])
+        parsed.location = parseGeodata(rootNode)
 
-		parsed.description = parseDescription(rootNode)
+        def etagestr = values['obj_floor']
+        try {
+            parsed.etage = (etagestr ?: 0) as Integer
+        } catch (NumberFormatException nfe) {
+            LOGGER.warn("Could not format etage value ${etagestr}")
+        }
+        parsed.plz = values['geo_plz']
 
-		parsed.timestamp = new Date()
+        def street = values['obj_streetPlain']
+        def houseNumber = values['obj_houseNumber']
+        parsed.adresse = street == 'no_information' ? null : street?.replaceAll('_', ' ') + ' ' + houseNumber
 
-		return parsed;
-	}
+        parsed.balkon = toBool(values['obj_balcony'])
+        parsed.keller = toBool(values['obj_cellar'])
+        parsed.ebk = toBool(values['obj_hasKitchen'])
+        parsed.aufzug = toBool(values['obj_lift'])
+        parsed.garten = toBool(values['obj_garden'])
 
-	def parseDescription(rootNode) {
-		def desc = rootNode.body.'**'.findAll { node ->
-			node.name() == 'pre'
-		}.inject("") { acc, val ->
-			switch(val.@class.text()) {
-				case 'is24qa-objektbeschreibung':
-					acc+='Object Beschreibung: '
-					break
-				case 'is24qa-ausstattung':
-					acc+='Ausstattung: '
-					break
-				case 'is24qa-lage':
-					acc+='Lage: '
-					break
-				case 'is24qa-sonstiges':
-					acc+='Sonstiges: '
-			}
+        parsed.description = parseDescription(rootNode)
 
-			acc+=sanitize(val.text())
-			acc+=" | "
-			acc
-		}
-		desc?desc[0..-3].trim():null
-	}
+        parsed.timestamp = new Date()
 
-	def GEO_LINE = ~/.*\"(.+)\":.*\"(.+)\",.*/
-	def parseGeodata(rootNode) {
-		def geoMap = [:]
+        return parsed;
+    }
 
-		rootNode.body.'**'.find { node -> node.name() == 'div' && node.@id == 'half-page-ad-stick-stopper' }?.text()
-			.eachLine {line ->
-			if(line.trim() =~/(lat|lng): ([\d]+\.[\d]+)[,]{0,1}/) {
-				def key = m[0][1]
-				def value = m[0][2]
-				switch(key) {
-					case 'lat':
-						geoMap['lat'] = value as double
-						break
-					case 'lng':
-						geoMap['lon'] = value as double
-						break
-				}
-			}
+    def parseDescription(rootNode) {
+        def desc = rootNode.body.'**'.findAll { node ->
+            node.name() == 'pre'
+        }.inject("") { acc, val ->
+            switch (val.@class.text()) {
+                case 'is24qa-objektbeschreibung':
+                    acc += 'Object Beschreibung: '
+                    break
+                case 'is24qa-ausstattung':
+                    acc += 'Ausstattung: '
+                    break
+                case 'is24qa-lage':
+                    acc += 'Lage: '
+                    break
+                case 'is24qa-sonstiges':
+                    acc += 'Sonstiges: '
+            }
 
-		}
+            acc += sanitize(val.text())
+            acc += " | "
+            acc
+        }
+        desc ? desc[0..-3].trim() : null
+    }
 
-		geoMap as GeoLocation
-	}
+    def GEO_LINE = ~/.*\"(.+)\":.*\"(.+)\",.*/
 
-	def toBool(value) {
-		'y' == value
-	}
-	//APARTMENT_RENT
-	def DATA_REGEX = ~/.*var keyValues = \{"(.+)"\};.*/
-	def PROPERTY_REGEX = ~/.*realEstateType: \"(.+)\",.*/
+    def parseGeodata(rootNode) {
+        def geoMap = [:]
 
-	private Map readKeyValues(GPathResult rootNode) {
-		def dataScript = rootNode.head.'**'.find { node ->
-			node.name() == 'script' && node.@type == 'text/javascript' && node.text().indexOf("var keyValues") != -1
-		}?.text()?.trim()
+        rootNode.body.'**'.find { node -> node.name() == 'div' && node.@id == 'half-page-ad-stick-stopper' }?.text()
+                ?.eachLine { line ->
+            if (line.trim() =~ /(lat|lng): ([\d]+\.[\d]+)[,]{0,1}/) {
+                def key = m[0][1]
+                def value = m[0][2]
+                switch (key) {
+                    case 'lat':
+                        geoMap['lat'] = value as double
+                        break
+                    case 'lng':
+                        geoMap['lon'] = value as double
+                        break
+                }
+            }
 
-		def valuemap = [:]
-		dataScript.eachLine { dataLine ->
-			switch(dataLine) {
-				case DATA_REGEX:
-					valuemap << m[0][1].split("\",\"").collectEntries { pairtxt ->
-						def pair = pairtxt.split("\":\"").collect { (it =~ "[\"]{0,1}(.+)[\"]{0,1}")[0][1] }
-						[(pair[0]):pair[1]]
-					}
-					break
-				case PROPERTY_REGEX:
-					def cat = ImmobilienscoutCategory.fromString(m[0][1])
-					valuemap << ['category': cat.category]					
-					valuemap << ['type':cat.propertyType]
-					valuemap << ['operation':cat.operation]
-					break
-			}
-		}
-		return valuemap
-	}
+        }
+
+        geoMap as GeoLocation
+    }
+
+    def toBool(value) {
+        'y' == value
+    }
+    //APARTMENT_RENT
+    def DATA_REGEX = ~/.*var keyValues = \{"(.+)"\};.*/
+    def PROPERTY_REGEX = ~/.*realEstateType: \"(.+)\",.*/
+
+    private Map readKeyValues(GPathResult rootNode) {
+        def dataScript = rootNode.head.'**'.find { node ->
+            node.name() == 'script' && node.@type == 'text/javascript' && node.text().indexOf("var keyValues") != -1
+        }?.text()?.trim()
+
+        def valuemap = [:]
+        dataScript.eachLine { dataLine ->
+            switch (dataLine) {
+                case DATA_REGEX:
+                    valuemap << m[0][1].split("\",\"").collectEntries { pairtxt ->
+                        def pair = pairtxt.split("\":\"").collect { (it =~ "[\"]{0,1}(.+)[\"]{0,1}")[0][1] }
+                        [(pair[0]): pair[1]]
+                    }
+                    break
+                case PROPERTY_REGEX:
+                    def cat = ImmobilienscoutCategory.fromString(m[0][1])
+                    valuemap << ['category': cat.category]
+                    valuemap << ['type': cat.propertyType]
+                    valuemap << ['operation': cat.operation]
+                    break
+            }
+        }
+        return valuemap
+    }
 
 }
