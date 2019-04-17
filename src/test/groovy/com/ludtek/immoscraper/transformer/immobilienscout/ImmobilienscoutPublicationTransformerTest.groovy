@@ -18,7 +18,7 @@ class ImmobilienscoutPublicationTransformerTest extends Specification {
 		output.area == 111
 		output.barrio == 'Schöneberg_Schöneberg'
 		output.currency == 'EUR'
-		output.dormcount == 3
+		output.dormcount == 1.5
 		output.id == 109663466
 		output.localidad == 'Berlin'
 		output.provincia == 'Berlin'

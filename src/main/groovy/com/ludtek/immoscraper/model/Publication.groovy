@@ -17,7 +17,7 @@ class Publication implements Serializable {
 	String barrio
 	String provider
 	int area
-	int dormcount
+	double dormcount
 	String disposition
 	long amount
 	String currency

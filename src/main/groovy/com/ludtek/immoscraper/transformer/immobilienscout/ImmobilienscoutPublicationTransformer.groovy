@@ -35,7 +35,7 @@ class ImmobilienscoutPublicationTransformer extends AbstractHTMLPublicationTrans
         parsed.localidad = values['obj_regio2']
         parsed.provincia = values['obj_regio1']
         parsed.currency = 'EUR'
-        parsed.dormcount = (values['obj_noRooms'] ?: values['obj_noRoomsRange'] ?: -1) as Integer
+        parsed.dormcount = (values['obj_noRooms'] ?: values['obj_noRoomsRange'] ?: -1) as Double
         parsed.id = values['obj_scoutId'] as Integer
 
         parsed.propertyType = values['type']
