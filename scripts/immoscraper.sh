@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar /home/immoscraper/build/immoscraper.jar $@
+java -jar /home/ubuntu/immoscraper/target/immoscraper.jar $@

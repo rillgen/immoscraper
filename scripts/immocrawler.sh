@@ -14,4 +14,4 @@ MAX_ID=`python -c "print int(float('$MAX_ID'))"`
 
 echo "Retrieving $RETR_NUM for $PROVIDER starting from $MAX_ID"
 
-java -jar /home/immoscraper/build/immoscraper.jar provider://$PROVIDER/$MAX_ID/$RETR_NUM ${BASE_URL/http/elastic}/immoscraper/publication
+java -jar /home/ubuntu/immoscraper/target/immoscraper.jar provider://$PROVIDER/$MAX_ID/$RETR_NUM ${BASE_URL/http/elastic}/immoscraper/publication
