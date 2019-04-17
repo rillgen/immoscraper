@@ -2,7 +2,7 @@
 BASE_URL=$1
 RETR_NUM=$2
 PROVIDER=$3
-JSON_AGG=$(curl -s -XGET $BASE_URL/immoscraper/publication/_search?q=provider:$PROVIDER -d '{
+JSON_AGG=$(curl -s -XGET -H "Content-Type: application/json" $BASE_URL/immoscraper/publication/_search?q=provider:$PROVIDER -d '{
       "size" : 0,
     "aggs" : {
         "max_id" : { "max" : { "field" : "id" } }
