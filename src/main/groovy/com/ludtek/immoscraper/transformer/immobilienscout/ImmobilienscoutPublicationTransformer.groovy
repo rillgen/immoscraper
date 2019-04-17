@@ -96,22 +96,21 @@ class ImmobilienscoutPublicationTransformer extends AbstractHTMLPublicationTrans
 	def parseGeodata(rootNode) {
 		def geoMap = [:]
 
-		rootNode.body.'**'.find { node ->
-			node.name() == 'script' && node.@type == 'text/javascript' && node.text().indexOf("IS24.googlemaps") != -1
-		}?.text()?.eachLine { line ->
-			switch(line) {
-				case GEO_LINE:
-					def key = m[0][1]
-					def value = m[0][2]
-					switch(key) {
-						case 'latitude':
-							geoMap['lat'] = value as double
-							break
-						case 'longitude':
-							geoMap['lon'] = value as double
-							break
-					}
+		rootNode.body.'**'.find { node -> node.name() == 'div' && node.@id == 'half-page-ad-stick-stopper' }?.text()
+			.eachLine {line ->
+			if(line.trim() =~/(lat|lng): ([\d]+\.[\d]+)[,]{0,1}/) {
+				def key = m[0][1]
+				def value = m[0][2]
+				switch(key) {
+					case 'lat':
+						geoMap['lat'] = value as double
+						break
+					case 'lng':
+						geoMap['lon'] = value as double
+						break
+				}
 			}
+
 		}
 
 		geoMap as GeoLocation

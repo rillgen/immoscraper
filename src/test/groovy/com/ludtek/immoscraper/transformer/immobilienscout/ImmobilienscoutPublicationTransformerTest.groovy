@@ -8,121 +8,84 @@ class ImmobilienscoutPublicationTransformerTest extends Specification {
 		given:
 		def transformer = new ImmobilienscoutPublicationTransformer()
 		def html = this.getClass().getResource('/providers/immobilienscout/wohnung1.html').text
-		
-	when:
+
+		when:
 		def output = transformer.parse(html)
-		
-	then:
+
+		then:
 		output != null
-		output.amount == 1211
-		output.area == 121
-		output.barrio == 'Frankenberg'
+		output.amount == 1816
+		output.area == 111
+		output.barrio == 'Schöneberg_Schöneberg'
 		output.currency == 'EUR'
-		//output.description
-		output.dormcount == 4
-		output.id == 90141069
-		output.localidad == 'Aachen'
-		output.provincia == 'Nordrhein_Westfalen'
+		output.dormcount == 3
+		output.id == 109663466
+		output.localidad == 'Berlin'
+		output.provincia == 'Berlin'
 		output.propertyType == 'APARTMENT'
 		output.provider == 'immobilienscout'
-		output.title == 'Preistipp***Neubau zum Einzug bereit***4 Zimmer Wohnung***Weitere Info : www.frankenberger-höfe.de'
+		output.title == '3-Zimmer-Wohnung mit 2 Balkonen im einzigartigen Schöneberg'
 		output.operation == 'RENT'
-		output.url == 'https://www.immobilienscout24.de/expose/90141069'
+		output.url == 'https://www.immobilienscout24.de/expose/109663466'
 		output.timestamp != null
-		output.location.lat == 50.77052851513431
-		output.location.lon == 6.112933897033864
-		output.description != null
-		
+
 		//Deutschland
 		output.category == 'APARTMENT_RENT'
-		output.etage == 0
-		output.plz == '52068'
-		output.adresse == 'In den Kronprinzengärten 11'
+		output.etage == 3
+		output.plz == '10829'
+		output.adresse == 'Bautzener Straße 35'
 		output.balkon == true
 		output.keller == true
 		output.aufzug == true
-		output.ebk == true
-		output.garten == true	
+		output.ebk == false
+		output.garten == false
+
+		//Geo
+		output.location.lat == 52.491471396558694
+		output.location.lon == 13.37169518423393
+		output.description != null
 	}
-	
+
+
 	def testWohnung2() {
 		given:
 		def transformer = new ImmobilienscoutPublicationTransformer()
 		def html = this.getClass().getResource('/providers/immobilienscout/wohnung2.html').text
-		
-	when:
-		def output = transformer.parse(html)
-		
-	then:
-		output != null
-		output.amount == 329976
-		output.area == 91
-		output.barrio == 'Plagwitz'
-		output.currency == 'EUR'
-		output.dormcount == 3
-		output.id == 94741545
-		output.localidad == 'Leipzig'
-		output.provincia == 'Sachsen'
-		output.propertyType == 'APARTMENT'
-		output.provider == 'immobilienscout'
-		output.title == 'EXKLUSIVER NEUBAU | PALMENGARTEN & CLARA PARK direkt um die Ecke | PROVISIONSFREI | LIFT | GARAGE'
-		output.operation == 'BUY'
-		output.url == 'https://www.immobilienscout24.de/expose/94741545'
-		output.timestamp != null
-		output.location.lat == 51.33208984254621
-		output.location.lon == 12.343105898705554
-		output.description != null
-		
-		//Deutschland
-		output.category == 'APARTMENT_BUY'
-		output.etage == 2
-		output.plz == '04229'
-		output.adresse == 'Karl-Heine-Straße 27'
-		output.balkon == true
-		output.keller == true
-		output.aufzug == true
-		output.ebk == false
-		output.garten == false
-	}
 
-		def testWohnung3() {
-		given:
-		def transformer = new ImmobilienscoutPublicationTransformer()
-		def html = this.getClass().getResource('/providers/immobilienscout/wohnung3.html').text
-		
-	when:
+		when:
 		def output = transformer.parse(html)
-		
-	then:
+
+		then:
 		output != null
-		output.amount == 371
-		output.area == 74
-		output.barrio == 'Herford'
+		output.amount == 960
+		output.area == 35
+		output.barrio == 'Heddernheim'
 		output.currency == 'EUR'
-		output.dormcount == 3
-		output.id == 95412937
-		output.localidad == 'Herford_Kreis'
-		output.provincia == 'Nordrhein_Westfalen'
+		output.dormcount == 2
+		output.id == 89915229
+		output.localidad == 'Frankfurt_am_Main'
+		output.provincia == 'Hessen'
 		output.propertyType == 'APARTMENT'
 		output.provider == 'immobilienscout'
-		output.title == '750 EUR Umzugszuschuss vom Vermieter geschenkt!'
+		output.title == 'Bezugsfrei!! Modernes Lifestyle: möblierte 2-Zimmer-Wohnung mit Pantry Küche - H2F'
 		output.operation == 'RENT'
-		output.url == 'https://www.immobilienscout24.de/expose/95412937'
+		output.url == 'https://www.immobilienscout24.de/expose/89915229'
 		output.timestamp != null
-		output.location.lat == 52.11205352427271
-		output.location.lon == 8.70022767205948
-		output.description != null
-		
+
 		//Deutschland
 		output.category == 'APARTMENT_RENT'
-		output.etage == 2
-		output.plz == '32049'
-		output.adresse == null
+		output.etage == 0
+		output.plz == '60439'
+		output.adresse == 'Olof-Palme-Straße 31'
 		output.balkon == false
 		output.keller == false
-		output.aufzug == false
-		output.ebk == false
+		output.aufzug == true
+		output.ebk == true
 		output.garten == false
+
+		//Geo
+		output.location.lat == 50.17297554738965
+		output.location.lon == 8.641633504474244
+		output.description != null
 	}
-		
 }
