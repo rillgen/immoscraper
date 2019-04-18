@@ -120,7 +120,7 @@ class ImmobilienscoutPublicationTransformer extends AbstractHTMLPublicationTrans
 
         }
 
-        geoMap as GeoLocation
+        validate(geoMap as GeoLocation)
     }
 
     static GeoLocation validate(GeoLocation geoLocation) {
