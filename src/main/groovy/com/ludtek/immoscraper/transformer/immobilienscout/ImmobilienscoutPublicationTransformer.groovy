@@ -100,8 +100,6 @@ class ImmobilienscoutPublicationTransformer extends AbstractHTMLPublicationTrans
         desc ? desc[0..-3].trim() : null
     }
 
-    def GEO_LINE = ~/.*\"(.+)\":.*\"(.+)\",.*/
-
     def parseGeodata(rootNode) {
         def geoMap = [:]
 
@@ -123,6 +121,10 @@ class ImmobilienscoutPublicationTransformer extends AbstractHTMLPublicationTrans
         }
 
         geoMap as GeoLocation
+    }
+
+    static GeoLocation validate(GeoLocation geoLocation) {
+        geoLocation?.lat && geoLocation?.lon ? geoLocation : null
     }
 
     def toBool(value) {
