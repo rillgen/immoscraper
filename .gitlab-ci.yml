@@ -1,0 +1,12 @@
+image: "openjdk:8u222-jdk"
+
+before_script:
+  - apt-get update -qq && apt-get install -qq maven
+
+stages:
+  - test
+
+unit-test:
+  stage: test
+  script:
+    - mvn clean test
